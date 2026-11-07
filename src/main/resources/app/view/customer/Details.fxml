@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" stylesheets="@../../css/customer.css" style="-fx-background-color:#F4F6F9; -fx-font-family:'Inter';" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.DetailsController">
+   <padding><Insets bottom="12" left="12" right="12" top="12" /></padding>
+
+   <BorderPane fx:id="shell" style="-fx-background-color:#FFFFFF; -fx-background-radius:32;">
+      <left>
+         <fx:include fx:id="sidebar" source="../components/Sidebar.fxml" />
+      </left>
+
+      <center>
+         <VBox fx:id="centerBox">
+            <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="12">
+               <padding><Insets bottom="0" left="36" right="36" top="32" /></padding>
+               <Label fx:id="pageTitleLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="Transaction details" />
+               <Label style="-fx-font-size:14px; -fx-text-fill:#DDE2EA;" text="|" />
+               <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Hello Jane, welcome back." />
+               <Region HBox.hgrow="ALWAYS" />
+               <Label fx:id="dateTimeLabel" style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="14:32, 09 October 2026" />
+            </HBox>
+
+            <ScrollPane fx:id="contentScrollPane" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color:transparent; -fx-background:transparent; -fx-padding:24 20 24 20;" VBox.vgrow="ALWAYS">
+               <VBox fx:id="contentBox" alignment="TOP_CENTER" style="-fx-background-color:transparent;">
+                  <VBox fx:id="detailsColumn" maxWidth="560" prefWidth="560" spacing="20" style="-fx-background-color:transparent;">
+
+                     <!-- ===================== TITLE ROW ===================== -->
+                     <HBox fx:id="titleRow" alignment="CENTER_LEFT" spacing="12">
+                        <Button fx:id="backButton" maxHeight="36" maxWidth="36" minHeight="36" minWidth="36" prefHeight="36" prefWidth="36" style="-fx-background-color:#F7F9FC; -fx-background-radius:999; -fx-border-radius:999; -fx-padding:0;">
+                           <graphic><FontIcon iconColor="#333948" iconLiteral="fas-arrow-left" iconSize="13" /></graphic>
+                        </Button>
+                        <VBox spacing="4">
+                           <Label fx:id="pageHeadingLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Transaction details" />
+                           <Label fx:id="pageSubtitleLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Everything about this transaction in one place." />
+                        </VBox>
+                     </HBox>
+
+                     <!-- ===================== RECEIPT ===================== -->
+                     <VBox fx:id="receiptWrapper" alignment="TOP_CENTER" spacing="0">
+
+                        <StackPane fx:id="receiptStack" alignment="TOP_CENTER">
+                           <VBox fx:id="receiptCard" alignment="TOP_CENTER" spacing="0" style="-fx-background-color:#FFFFFF; -fx-background-radius:26 26 0 0; -fx-border-color:#EEF1F6; -fx-border-radius:26 26 0 0; -fx-effect:dropshadow(gaussian,rgba(30,40,80,0.10),24,0,0,12);">
+                              <padding><Insets bottom="24" left="28" right="28" top="30" /></padding>
+
+                              <Label fx:id="transactionTitleLabel" alignment="CENTER" maxWidth="440" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="" textAlignment="CENTER" wrapText="true" />
+
+                              <StackPane fx:id="iconBubble" maxHeight="76" maxWidth="76" minHeight="76" minWidth="76">
+                                 <VBox.margin><Insets bottom="22" top="18" /></VBox.margin>
+                                 <Circle fill="#EEF1F6" radius="38" stroke="transparent" />
+                                 <Circle fill="#FFFFFF" radius="30" stroke="transparent" />
+                                 <FontIcon iconColor="#3454E1" iconLiteral="fas-file-invoice" iconSize="24" />
+                                 <FontIcon iconColor="#9DA3A9" iconLiteral="far-clock" iconSize="12" translateX="14" translateY="12" />
+                              </StackPane>
+
+                              <Separator fx:id="titleDivider" style="-fx-background-color:#E7ECF3;">
+                                 <VBox.margin><Insets bottom="18" /></VBox.margin>
+                              </Separator>
+
+                              <VBox fx:id="detailRowsBox" spacing="0" style="-fx-background-color:transparent;">
+
+                                 <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <padding><Insets bottom="12" left="8" right="8" top="12" /></padding>
+                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Amount" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="amountValueLabel" style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="" />
+                                 </HBox>
+
+                                 <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <padding><Insets bottom="12" left="8" right="8" top="12" /></padding>
+                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Date &amp; time" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="dateTimeValueLabel" style="-fx-font-size:13px; -fx-text-fill:#67707F;" text="" />
+                                 </HBox>
+                                 <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <padding><Insets bottom="12" left="8" right="8" top="12" /></padding>
+                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Message" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="messageValueLabel" maxWidth="320" style="-fx-font-size:13px; -fx-text-fill:#67707F;" text="-" wrapText="true" />
+                                 </HBox>
+                              </VBox>
+
+                              <Region minHeight="14" />
+
+                              <HBox fx:id="referenceRow" alignment="CENTER_LEFT" spacing="12">
+                                 <padding><Insets bottom="12" left="8" right="8" top="12" /></padding>
+                                 <Label style="-fx-font-size:13px; -fx-text-fill:#9DA3A9;" text="Reference number" />
+                                 <Region HBox.hgrow="ALWAYS" />
+                                 <Label fx:id="referenceValueLabel" style="-fx-font-family:'monospace'; -fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="" />
+                                 <Button fx:id="copyReferenceButton" maxHeight="32" maxWidth="32" minHeight="32" minWidth="32" prefHeight="32" prefWidth="32" style="-fx-background-color:transparent; -fx-background-radius:999; -fx-padding:0;">
+                                    <graphic><FontIcon iconColor="#3454E1" iconLiteral="fas-copy" iconSize="14" /></graphic>
+                                 </Button>
+                              </HBox>
+                           </VBox>
+                        </StackPane>
+
+                        <Polygon fx:id="receiptZigzag" fill="#FFFFFF" points="0,0,10,16,20,0,30,16,40,0,50,16,60,0,70,16,80,0,90,16,100,0,110,16,120,0,130,16,140,0,150,16,160,0,170,16,180,0,190,16,200,0,210,16,220,0,230,16,240,0,250,16,260,0,270,16,280,0,290,16,300,0,310,16,320,0,330,16,340,0,350,16,360,0,370,16,380,0,390,16,400,0,410,16,420,0,430,16,440,0,450,16,460,0,470,16,480,0,490,16,500,0,510,16,520,0,530,16,540,0,550,16,560,0" stroke="#EEF1F6" strokeWidth="1" />
+                     </VBox>
+
+                     <!-- ===================== HELP BOX ===================== -->
+                     <HBox fx:id="helpBox" alignment="CENTER_LEFT" spacing="16" style="-fx-background-color:#F7F9FC; -fx-background-radius:28; -fx-border-color:#EEF1F6; -fx-border-radius:28;">
+                        <padding><Insets bottom="14" left="22" right="22" top="14" /></padding>
+                        <StackPane fx:id="helpIconWrap" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40">
+                           <Circle fill="#EEF1FE" radius="20" stroke="transparent" />
+                           <FontIcon iconColor="#3454E1" iconLiteral="fas-question" iconSize="16" />
+                        </StackPane>
+                        <TextFlow fx:id="helpTextFlow" HBox.hgrow="ALWAYS" style="-fx-background-color:transparent;">
+                           <Text style="-fx-font-family:'Inter'; -fx-font-size:12px; -fx-fill:#67707F;" text="Have questions or concerns about this transaction? " />
+                           <Hyperlink fx:id="getHelpLink" style="-fx-background-color:transparent; -fx-border-color:transparent; -fx-font-family:'Inter'; -fx-font-size:12px; -fx-font-weight:bold; -fx-padding:0; -fx-underline:false; -fx-text-fill:#3454E1;" text="Get Help" />
+                        </TextFlow>
+                     </HBox>
+                  </VBox>
+               </VBox>
+            </ScrollPane>
+         </VBox>
+      </center>
+   </BorderPane>
+</StackPane>

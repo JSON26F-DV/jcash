@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="termsRoot" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-font-family:'Inter';" stylesheets="@../../css/Style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.common.PolicyPageController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-background-color:#FFFFFF; -fx-border-color:transparent transparent #EEF1F6 transparent;">
+         <padding><Insets bottom="20" left="48" right="48" top="20" /></padding>
+         <Button onAction="#returnToLanding" styleClass="policy-back-button" text="← Back" />
+         <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:18px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="JCash Bank" />
+         <Region HBox.hgrow="ALWAYS" />
+         <Label fx:id="termsUpdatedLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Last updated: October 27, 2026" />
+      </HBox>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color:transparent; -fx-background:transparent;">
+         <content>
+            <VBox alignment="TOP_CENTER" spacing="24" style="-fx-background-color:transparent;">
+               <padding><Insets bottom="48" left="28" right="28" top="40" /></padding>
+               <VBox maxWidth="840" spacing="24" style="-fx-background-color:#FFFFFF; -fx-background-radius:26; -fx-border-color:#EEF1F6; -fx-border-radius:26; -fx-effect:dropshadow(gaussian,rgba(30,40,80,0.08),20,0,0,8);">
+                  <padding><Insets bottom="40" left="48" right="48" top="40" /></padding>
+                  <VBox spacing="8">
+                     <Label fx:id="termsTitleLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:30px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Terms and Conditions" wrapText="true" />
+                     <Label style="-fx-font-size:14px; -fx-text-fill:#67707F;" text="Please read these terms carefully before using your account." wrapText="true" />
+                  </VBox>
+                  <VBox spacing="18">
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="1. About these terms" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="These terms describe the general conditions for using JCash Bank services. By accessing or using the services, you agree to comply with the applicable account terms, policies, and instructions provided to you." wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="2. Your account" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="Keep your login credentials and verification codes confidential. You are responsible for activity performed through your account. Contact the bank promptly if you believe your account or device has been compromised." wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="3. Payments and transactions" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="Review transaction details before submitting a payment or transfer. Processing times, limits, and any applicable fees may vary by transaction type and will be presented where relevant." wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="4. Safe and lawful use" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="Use the services only for lawful purposes and do not interfere with their security or availability. We may restrict access when required to protect customers, comply with applicable requirements, or address suspected misuse." wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="5. Updates and support" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="These terms may be updated from time to time. Where required, we will provide notice of material changes. Contact customer support if you have questions about your account or these terms." wrapText="true" /></VBox>
+                  </VBox>
+                  <Label fx:id="termsDisclaimerLabel" style="-fx-background-color:#F7F9FC; -fx-background-radius:14; -fx-padding:14; -fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="This page is a sample interface. Replace this text with the bank’s approved legal terms before release." wrapText="true" />
+               </VBox>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

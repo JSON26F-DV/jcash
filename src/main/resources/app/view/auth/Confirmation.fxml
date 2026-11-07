@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-padding:12;" stylesheets="@app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.transaction.ConfirmationController">
+        <BorderPane fx:id="shell" style="-fx-background-color:#FFFFFF; -fx-background-radius:32;">
+            <left>
+                <fx:include fx:id="sidebar" source="../components/Sidebar.fxml" />
+            </left>
+
+            <center>
+                <VBox fx:id="centerBox">
+                        <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="12">
+                            <padding>
+                                <Insets left="36" right="36" top="32" />
+                            </padding>
+                                <Label fx:id="pageTitleLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="Confirmation" />
+                                <Label style="-fx-text-fill:#DDE2EA; -fx-font-size:14px;" text="|" />
+                                <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Hello Jane, welcome back." />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label fx:id="dateTimeLabel" style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="14:32, 09 October 2026" />
+                        </HBox>
+
+                        <ScrollPane fx:id="contentScrollPane" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background:transparent; -fx-background-color:transparent; -fx-padding:24 20 24 20;" VBox.vgrow="ALWAYS">
+                                <VBox fx:id="contentBox" alignment="TOP_CENTER" spacing="20">
+                                        <VBox fx:id="confirmColumn" alignment="TOP_CENTER" maxWidth="560" prefWidth="560" spacing="20">
+                                            <children>
+                                                <HBox fx:id="titleRow" alignment="CENTER_LEFT" spacing="12">
+                                                    <children>
+                                                        <Button fx:id="backButton" prefHeight="36" prefWidth="36" style="-fx-background-color:#F7F9FC; -fx-background-radius:999; -fx-border-color:transparent; -fx-cursor:hand;">
+                                                            <graphic>
+                                                                <Label style="-fx-font-size:16px; -fx-text-fill:#333948;" text="←" />
+                                                            </graphic>
+                                                        </Button>
+                                                        <VBox spacing="2">
+                                                            <children>
+                                                                <Label fx:id="pageHeadingLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Confirm transaction" />
+                                                                <Label fx:id="pageSubtitleLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Review the details before you send." />
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+
+                                                <StackPane fx:id="confirmStack" alignment="TOP_CENTER">
+                                                    <children>
+                                                        <VBox fx:id="confirmCard" alignment="TOP_CENTER" maxWidth="560" prefWidth="560" spacing="0" style="-fx-background-color:#FFFFFF; -fx-background-radius:26; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:26; -fx-effect:dropshadow(gaussian, rgba(30,40,80,0.08), 24, 0, 0, 10);">
+                                                            <padding>
+                                                                <Insets bottom="32" left="36" right="36" top="36" />
+                                                            </padding>
+                                                            <children>
+                                                                <HBox fx:id="avatarPair" alignment="CENTER" spacing="-12">
+                                                                    <children>
+                                                                        <StackPane fx:id="senderAvatar" prefHeight="60" prefWidth="60" style="-fx-background-color:transparent;">
+                                                                            <children>
+                                                                                <Circle radius="30" fill="#2C48C9" stroke="WHITE" strokeWidth="3" />
+                                                                                <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:white;" text="\$" />
+                                                                            </children>
+                                                                        </StackPane>
+                                                                        <StackPane fx:id="recipientAvatar" prefHeight="60" prefWidth="60" style="-fx-background-color:transparent;">
+                                                                            <children>
+                                                                                <Circle radius="30" fill="#3454E1" stroke="WHITE" strokeWidth="3" />
+                                                                                <Label fx:id="recipientInitialsLabel" style="-fx-font-size:17px; -fx-font-weight:bold; -fx-text-fill:white;" text="JC" />
+                                                                            </children>
+                                                                        </StackPane>
+                                                                    </children>
+                                                                </HBox>
+
+                                                                <VBox alignment="CENTER" spacing="10" style="-fx-padding:14 0 0 0;">
+                                                                    <children>
+                                                                        <Label fx:id="recipientNameLabel" alignment="CENTER" maxWidth="460" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="JA••••E C." wrapText="true" />
+                                                                        <HBox fx:id="recipientNumberPill" alignment="CENTER" spacing="0" style="-fx-background-color:#EEF1FE; -fx-background-radius:999; -fx-padding:8 22 8 22;">
+                                                                            <children>
+                                                                                <Label fx:id="recipientNumberLabel" style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="4021 5890 7712 4558" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+
+                                                                <HBox alignment="CENTER_LEFT" spacing="0" style="-fx-padding:26 0 0 0;">
+                                                                    <children>
+                                                                        <VBox alignment="CENTER_LEFT" spacing="2">
+                                                                            <children>
+                                                                                <Label fx:id="sourceAccountNameLabel" style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="JCash" />
+                                                                                <Label fx:id="sourceAccountNumberLabel" style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="•••• 7712" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                        <Region HBox.hgrow="ALWAYS" />
+                                                                        <VBox alignment="CENTER_RIGHT" spacing="2">
+                                                                            <children>
+                                                                                <Label style="-fx-font-size:10px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="AVAILABLE BALANCE" />
+                                                                                <Label fx:id="cashBalanceLabel" style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="\$12,480.00" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </HBox>
+
+                                                                <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9; -fx-padding:20 0 8 0;" text="YOU'RE ABOUT TO SEND" />
+
+                                                                <HBox alignment="CENTER_LEFT" style="-fx-padding:4 0 4 0;">
+                                                                    <children>
+                                                                        <Label style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Amount" />
+                                                                        <Region HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="amountLabel" style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="\$250.00" />
+                                                                    </children>
+                                                                </HBox>
+
+                                                                <HBox alignment="CENTER_LEFT" style="-fx-padding:4 0 4 0;">
+                                                                    <children>
+                                                                        <Label style="-fx-font-size:13px; -fx-text-fill:#9DA3A9;" text="Transfer fee" />
+                                                                        <Region HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="feeLabel" style="-fx-font-size:13px; -fx-text-fill:#333948;" text="\$0.00" />
+                                                                    </children>
+                                                                </HBox>
+
+                                                                <HBox alignment="CENTER_LEFT" style="-fx-padding:18 0 0 0;">
+                                                                    <children>
+                                                                        <Label style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Total Amount to Pay" />
+                                                                        <Region HBox.hgrow="ALWAYS" />
+                                                                        <Label fx:id="totalAmountLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:32px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="\$250.00" />
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </StackPane>
+
+                                                <HBox fx:id="noticeBox" alignment="TOP_LEFT" spacing="14" style="-fx-background-color:#FFF7E6; -fx-background-radius:20; -fx-padding:18 22 18 22;">
+                                                    <children>
+                                                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label fx:id="noticeTitleLabel" style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#8A6100;" text="Double-check the account number" />
+                                                                <Label fx:id="noticeBodyLabel" style="-fx-font-size:12px; -fx-text-fill:#8A6100;" text="Transfers can't be reversed once sent. Make sure the recipient details above are correct." wrapText="true" />
+                                                            </children>
+                                                        </VBox>
+                                                        <Label style="-fx-font-size:20px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="✓" />
+                                                    </children>
+                                                </HBox>
+
+                                                <VBox fx:id="reviewBox" alignment="CENTER" spacing="12">
+                                                    <children>
+                                                        <Label fx:id="reviewLabel" alignment="CENTER" maxWidth="480" style="-fx-font-size:13px; -fx-text-fill:#333948;" text="Review to make sure the account number is correct and up to date." textAlignment="CENTER" wrapText="true" />
+                                                        <HBox fx:id="confirmCheckRow" alignment="CENTER" spacing="12">
+                                                            <children>
+                                                                <CheckBox fx:id="confirmCheckBox" selected="false" style="-fx-font-size:13px; -fx-text-fill:#333948;" text="Yes, I confirm the number is correct." />
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+
+                                                <HBox fx:id="actionsRow" spacing="12">
+                                                    <children>
+                                                        <Button fx:id="cancelButton" maxWidth="150" prefHeight="48" prefWidth="150" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold;" text="Cancel" />
+                                                        <Button fx:id="sendButton" defaultButton="false" disable="true" maxWidth="Infinity" prefHeight="48" style="-fx-background-color:#3454E1; -fx-background-radius:16; -fx-text-fill:white; -fx-font-size:13px; -fx-font-weight:bold; -fx-opacity:0.55;" text="Send $250.00" HBox.hgrow="ALWAYS">
+                                                            <graphic>
+                                                                <Label style="-fx-font-size:13px; -fx-text-fill:#FFFFFF;" text="➤" />
+                                                            </graphic>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+
+                                                <Label fx:id="statusMessageLabel" alignment="CENTER" maxWidth="480" style="-fx-font-size:12px; -fx-text-fill:#E2557A;" text="" />
+                                            </children>
+                                        </VBox>
+                                </VBox>
+                        </ScrollPane>
+                </VBox>
+            </center>
+        </BorderPane>
+</StackPane>

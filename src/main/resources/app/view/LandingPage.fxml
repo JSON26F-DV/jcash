@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane prefHeight="700.0" prefWidth="1280.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.auth.LandingPageController">
+   <center>
+      <javafx.scene.layout.AnchorPane>
+         <children>
+            <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+               <VBox fx:id="leftPanel" prefWidth="675.0" styleClass="left-panel" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/circle_logo.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                           <children>
+                              <ImageView fx:id="promoImageView" fitHeight="562.0" fitWidth="815.0" preserveRatio="true" styleClass="promo-card">
+                                 <image>
+                                    <Image url="@../assets/widget.png" />
+                                 </image>
+                              </ImageView>
+                              <javafx.scene.text.TextFlow styleClass="headline" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="48" left="48" right="48" top="48" />
+                     </padding>
+                  </VBox>
+            <VBox alignment="CENTER" prefWidth="420.0" styleClass="right-panel">
+               <children>
+                  <VBox alignment="TOP_CENTER" maxWidth="384" spacing="12">
+                     <children>
+                        <Label fx:id="loginHeadingLabel" styleClass="heading" text="Log into JCash Bank" />
+                        <TextField fx:id="mobileNumberField" promptText="Mobile number" styleClass="input" />
+                        <PasswordField fx:id="passwordField" promptText="Enter your 6-Digit PIN" styleClass="input" />
+                        <Button fx:id="javaBtn" maxWidth="Infinity" styleClass="btn-primary" text="Log in" />
+                        <Button fx:id="forgotPasswordButton" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0; -fx-text-fill: #000000; -fx-cursor: hand;" text="Forgot password?">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin></Button>
+                        <Label fx:id="errorLabel" style="-fx-text-fill: #DC2626;" wrapText="true" />
+                        <Button fx:id="registerBtn" maxWidth="Infinity" styleClass="btn-outline" text="Create new account" />
+                        <HBox alignment="CENTER" prefHeight="0.0" prefWidth="315.0" spacing="6" style="-fx-padding: 3 0 0 0;" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                        <Insets bottom="32" left="32" right="32" top="32" />
+                     </padding>
+            </VBox>
+               </children>
+            </HBox>
+         </children>
+      </javafx.scene.layout.AnchorPane>
+   </center>
+   <bottom>
+      <VBox styleClass="footer">
+         <children>
+            <HBox spacing="16" styleClass="footer-row">
+               <children>
+                  <Label onMouseClicked="#selectEnglish" styleClass="language-text" text="English (US)" />
+                  <Label onMouseClicked="#selectFilipino" styleClass="language-text" text="Filipino" />
+                  <Label onMouseClicked="#selectBisaya" styleClass="language-text" text="Bisaya" />
+                  <Label onMouseClicked="#selectSpanish" styleClass="language-text" text="Español" />
+                  <Label onMouseClicked="#selectJapanese" styleClass="language-text footer-cjk-jp" text="日本語" />
+                  <Label onMouseClicked="#selectKorean" styleClass="language-text footer-cjk-kr" text="한국어" />
+                  <Label onMouseClicked="#selectChinese" styleClass="language-text footer-cjk-sc" text="中文(简体)" />
+               </children>
+            </HBox>
+            <Separator style="-fx-padding: 8 0 8 0;" />
+            <HBox spacing="16" styleClass="footer-row">
+               <children>
+                  <Label styleClass="footer-link" text="Sign Up" />
+                  <Label styleClass="footer-link" text="Log In" />
+                  <Label styleClass="footer-link" text="Cards" />
+                  <Label styleClass="footer-link" text="Security" />
+                  <Label styleClass="footer-link" text="Help Center" />
+                  <Label fx:id="termsLink" styleClass="footer-link" text="Terms" />
+                  <Label fx:id="privacyLink" styleClass="footer-link" text="Privacy" />
+                  <Label styleClass="footer-link" text="Jcash Bank" />
+               </children>
+            </HBox>
+         </children>
+         <padding><Insets bottom="16" left="32" right="32" top="16" /></padding>
+      </VBox>
+   </bottom>
+</BorderPane>

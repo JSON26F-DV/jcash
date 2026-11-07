@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-font-family:'Inter';" stylesheets="@../../css/customer.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.HistoryController">
+   <padding><Insets bottom="12" left="12" right="12" top="12" /></padding>
+
+   <BorderPane fx:id="shell" style="-fx-background-color:#FFFFFF; -fx-background-radius:32;">
+
+      <left>
+         <fx:include fx:id="sidebar" source="../components/Sidebar.fxml" />
+      </left>
+      <center>
+         <VBox fx:id="centerBox">
+
+            <!-- HEADER -->
+            <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="12">
+               <padding><Insets bottom="0" left="36" right="36" top="32" /></padding>
+               <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="Transactions" />
+               <Label style="-fx-text-fill:#DDE2EA; -fx-font-size:14px;" text="|" />
+               <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Hello, Welcome Back." />
+               <Region HBox.hgrow="ALWAYS" />
+               <Label fx:id="dateTimeLabel" style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" />
+            </HBox>
+
+            <!-- CONTENT -->
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background:transparent; -fx-background-color:transparent; -fx-padding:24 20 24 20;" VBox.vgrow="ALWAYS">
+               <VBox alignment="TOP_CENTER" maxWidth="Infinity">
+                  <VBox maxWidth="980" spacing="20" style="-fx-padding:0 0 24 0;">
+
+                     <!-- BOX 1: Transactions -->
+                     <VBox fx:id="transactionsPanel" spacing="12" style="-fx-background-color:#FFFFFF; -fx-background-radius:26; -fx-border-color:#EEF1F6; -fx-effect:dropshadow(gaussian,rgba(30,40,80,0.10),24,0,0,12); -fx-border-radius:26;">
+                        <padding><Insets bottom="22" left="24" right="24" top="22" /></padding>
+
+                        <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="All transactions" />
+
+                        <VBox fx:id="transactionsListBox" spacing="0" />
+                     </VBox>
+
+                  </VBox>
+               </VBox>
+            </ScrollPane>
+         </VBox>
+      </center>
+   </BorderPane>
+</StackPane>
