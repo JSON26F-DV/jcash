@@ -51,6 +51,10 @@ public class LandingPageController {
                 AppRoutes.dashboard();
                 return;
             }
+            if ("Account deleted.".equals(authService.message())) {
+                AppRoutes.deletedAccount();
+                return;
+            }
             if ("Too many failed attempts. Exiting.".equals(authService.message())) {
                 errorLabel.setText(authService.message());
                 Platform.exit();

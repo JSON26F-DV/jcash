@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-padding:12;" stylesheets="@app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.transaction.ConfirmationController">
+<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-padding:12;" stylesheets="@../../css/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.transaction.ConfirmationController">
         <BorderPane fx:id="shell" style="-fx-background-color:#FFFFFF; -fx-background-radius:32;">
             <left>
                 <fx:include fx:id="sidebar" source="../components/Sidebar.fxml" />
@@ -64,7 +64,7 @@
                                                                         <StackPane fx:id="senderAvatar" prefHeight="60" prefWidth="60" style="-fx-background-color:transparent;">
                                                                             <children>
                                                                                 <Circle radius="30" fill="#2C48C9" stroke="WHITE" strokeWidth="3" />
-                                                                                <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:white;" text="\$" />
+                                                                                <Label style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:white;" text="₱" />
                                                                             </children>
                                                                         </StackPane>
                                                                         <StackPane fx:id="recipientAvatar" prefHeight="60" prefWidth="60" style="-fx-background-color:transparent;">
@@ -99,7 +99,7 @@
                                                                         <VBox alignment="CENTER_RIGHT" spacing="2">
                                                                             <children>
                                                                                 <Label style="-fx-font-size:10px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="AVAILABLE BALANCE" />
-                                                                                <Label fx:id="cashBalanceLabel" style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="\$12,480.00" />
+                                                                                <Label fx:id="cashBalanceLabel" style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="₱12,480.00" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
@@ -111,7 +111,7 @@
                                                                     <children>
                                                                         <Label style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Amount" />
                                                                         <Region HBox.hgrow="ALWAYS" />
-                                                                        <Label fx:id="amountLabel" style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="\$250.00" />
+                                                                        <Label fx:id="amountLabel" style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="₱250.00" />
                                                                     </children>
                                                                 </HBox>
 
@@ -119,7 +119,7 @@
                                                                     <children>
                                                                         <Label style="-fx-font-size:13px; -fx-text-fill:#9DA3A9;" text="Transfer fee" />
                                                                         <Region HBox.hgrow="ALWAYS" />
-                                                                        <Label fx:id="feeLabel" style="-fx-font-size:13px; -fx-text-fill:#333948;" text="\$0.00" />
+                                                                        <Label fx:id="feeLabel" style="-fx-font-size:13px; -fx-text-fill:#333948;" text="₱0.00" />
                                                                     </children>
                                                                 </HBox>
 
@@ -127,7 +127,7 @@
                                                                     <children>
                                                                         <Label style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Total Amount to Pay" />
                                                                         <Region HBox.hgrow="ALWAYS" />
-                                                                        <Label fx:id="totalAmountLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:32px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="\$250.00" />
+                                                                        <Label fx:id="totalAmountLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:32px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="₱250.00" />
                                                                     </children>
                                                                 </HBox>
                                                             </children>

@@ -4,7 +4,7 @@
 
 # JCash
 
-**A desktop banking application built with JavaFX — accounts, cash-in, instant transfers, and email OTP recovery.**
+**A desktop banking application built with JavaFX — accounts, cards, cash-in, instant transfers, and email OTP recovery.**
 
 <p>
   <img alt="Java 17" src="https://img.shields.io/badge/Java-17-orange?logo=openjdk&logoColor=white" />
@@ -24,9 +24,9 @@
 ## Overview
 
 **JCash** is a self-contained desktop banking demo written in Java 17 and JavaFX 21. It models the core
-flows of a retail banking app — account creation, PIN-based authentication, wallet top-up, peer-to-peer
-transfers, transaction history — and implements a complete **email one-time-password (OTP)** pipeline for
-account recovery.
+flows of a retail banking app — account creation, PIN-based authentication, debit/credit/prepaid card
+issuance, wallet top-up, peer-to-peer transfers, transaction history, and account closure — and implements a
+complete **email one-time-password (OTP)** pipeline for account recovery.
 
 The application is intentionally small and readable: thin FXML controllers, a service layer, and a DAO
 layer over JDBI, backed by a single MySQL/MariaDB schema. All money movements are executed inside database
@@ -58,12 +58,13 @@ transactions with conditional balance updates, so a failed transfer cannot leave
 | **PIN hashing** | PINs are never stored in plaintext — they are hashed before persistence and never logged. |
 | **Multi-language UI** | Landing screen switcher for English, Filipino, Bisaya, Spanish, Japanese, Korean, and Chinese. |
 | **Session handling** | In-memory session tracks the signed-in user; sign-out returns to the landing screen. |
+| **Account deletion** | Self-service closure from Settings, guarded by a typed confirmation phrase. Soft-deletes the account and blocks all future sign-ins. |
 
 ### Banking Operations
 
 | Feature | Description |
 | --- | --- |
-| **Dashboard** | Live balance plus the five most recent transactions. |
+| **Dashboard** | Live balance with a hide/show toggle, masked mobile number, recent transactions, and a card strip showing up to two cards. |
 | **Cash-in** | Top up the wallet with a validated positive amount and a confirmation step. |
 | **Express Send (P2P)** | Transfer money to another customer by mobile number — self-transfers blocked, balance checked, optional message attached. |
 | **Atomic transfers** | Debit and credit are applied in a single DB transaction with row locking and a `balance + delta >= 0` guard. |
@@ -71,6 +72,22 @@ transactions with conditional balance updates, so a failed transfer cannot leave
 | **Transaction details** | Per-transaction receipt view: amount, date/time, reference (transaction ID), and message. |
 | **Profile & settings** | View name, email, mobile, balance, role, status, session start time, and session token preview. |
 | **Policies** | Built-in Terms of Service and Privacy Policy screens. |
+
+### Cards
+
+| Feature | Description |
+| --- | --- |
+| **Card issuance** | Create a debit, credit, or prepaid card in one of four finishes — blue, graphite, onyx, or emerald. |
+| **Physical-card UI** | Cards render as realistic card visuals with chip, masked number (`•••• 1234`), expiry, and holder name. |
+| **Card number** | 16 digits generated with `SecureRandom`, stored uniquely per card and masked everywhere it is displayed. |
+| **Expiry** | Issued with a five-year expiry (`MM/yy`); no CVV is generated or stored. |
+| **Card PIN** | A separate 4-digit card PIN is collected at creation and stored as a **BCrypt** hash. |
+| **Issuance fee** | A flat **₱250.00** fee is debited atomically with card creation, locking the account balance and rolling back on any failure. |
+| **Freeze / unfreeze** | Instantly toggle a card between Active and Frozen from the cards page. |
+| **Card wallet** | A dedicated "My cards" page lists every card newest-first, plus a compact card strip on the dashboard. |
+
+> Cards are linked to the account, not to separate balances: a card displays the account balance, and there
+> are currently no per-card limits, credit lines, or prepaid loads.
 
 ### Email OTP Recovery
 
@@ -119,6 +136,7 @@ transactions with conditional balance updates, so a failed transfer cannot leave
 | Email | Jakarta Mail via Angus Mail 2.0.3, Brevo SMTP relay |
 | Validation | Jakarta Bean Validation 3.0.2, Hibernate Validator 8.0.2 |
 | Boilerplate | Lombok 1.18.48 |
+| Hashing | SHA-256 for login PINs (`PinUtil`), BCrypt 0.4 (`jbcrypt`) for card PINs |
 | Build & run | Maven Wrapper 3.8.5, `javafx-maven-plugin` 0.0.8 |
 
 ---
@@ -146,7 +164,22 @@ mysql -u root -p jcash_db < src/main/java/app/database/jcash_db.sql
 ```
 
 Alternatively, import `src/main/java/app/database/jcash_db.sql` through phpMyAdmin or any SQL client.
-The dump creates the `users` and `transactions` tables and includes demo rows.
+The dump creates the `users`, `transactions`, and `cards` tables and includes demo rows.
+
+<details>
+<summary><b>Upgrading an existing database</b></summary>
+
+<br />
+
+If you already imported an older dump, the cards feature needs:
+
+- a new `cards` table (`user_id`, `card_type`, `color`, `card_number`, `expiry_date`, `pin_hash`,
+  `is_frozen`, `created_at`) with a unique index on `card_number` and a foreign key to `users.id`;
+- a new `users.is_deleted` column used by the account-closure flow.
+
+The simplest path is to recreate the schema and re-import the current dump.
+
+</details>
 
 ### 3. Point the app at your database
 
@@ -214,21 +247,21 @@ src/main/java/app
 ├── config/                    # Database + .env configuration
 ├── controller/
 │   ├── auth/                  # Landing, register, forgot PIN, OTP, change PIN
-│   ├── customer/              # Dashboard, history, details, settings
+│   ├── customer/              # Dashboard, cards, new card, history, details, settings
 │   ├── transaction/           # Cash-in, express send, confirmation
 │   ├── common/                # Header, sidebar, policy pages, routing
 │   └── components/
-├── dao/                       # DAO interfaces + JDBI implementations
+├── dao/                       # DAO interfaces + JDBI implementations (users, transactions, cards)
 ├── dto/                       # Transfer objects and view records
 ├── model/                     # User, Transaction
-├── services/                  # AuthService, TransactionService, PasswordResetService, BrevoEmailService
+├── services/                  # AuthService, TransactionService, CardService, PasswordResetService, BrevoEmailService
 ├── session/                   # UserSession
-├── util/                      # PinUtil (hashing)
+├── util/                      # PinUtil (login-PIN hashing)
 └── database/jcash_db.sql      # Schema + demo data
 
 src/main/resources/app
-├── view/                      # FXML layouts
-├── css/                       # Stylesheets
+├── view/                      # FXML layouts (customer/cards.fxml, customer/new_card.fxml, pages/DeletedAccount.fxml, ...)
+├── css/                       # Stylesheets (Style.css, customer.css, app.css)
 ├── assets/                    # Logo and imagery
 └── email/password-reset.html  # OTP email template
 ```
@@ -259,11 +292,15 @@ Database settings are compile-time constants in `app/config/DatabaseConnection.j
 
 This is a demonstration project. Before using it with real data:
 
-- **PIN hashing is unsalted SHA-256.** Use BCrypt, scrypt, or Argon2 with per-user salts.
+- **Login PINs use unsalted SHA-256.** Card PINs already use BCrypt; migrate login PINs to BCrypt, scrypt,
+  or Argon2 with per-user salts.
 - **Database credentials are hardcoded** to `root` with an empty password. Move them to environment
   variables or a secrets manager, and use a dedicated least-privilege database user.
 - **OTP state and login lockout counters are in memory** and shared across the process. Persist them and
   scope them per account for any multi-user deployment.
+- **Card numbers are random, not issuer-grade** — no BIN ranges or Luhn checksum, and no CVV is stored. Do not
+  treat generated cards as real payment instruments.
+- **Account deletion is a soft delete.** The row stays and is not filtered out of recipient lookups.
 - **No transport security between app and database** unless your MySQL instance is configured for TLS.
 - **Never commit `.env`.** Credentials belong in the environment, not in the repository.
 
@@ -271,9 +308,12 @@ This is a demonstration project. Before using it with real data:
 
 ## Roadmap
 
-- [ ] Salted, adaptive PIN hashing (BCrypt/Argon2)
+- [ ] Salted, adaptive hashing for login PINs (card PINs already use BCrypt)
 - [ ] Externalized database configuration
 - [ ] Persisted OTP and per-account throttling
+- [ ] Card PIN change/verification and per-card limits
+- [ ] Luhn-valid card numbers with issuer BIN prefixes
+- [ ] Exclude soft-deleted accounts from recipient lookup
 - [ ] Automated tests (JUnit 5 is already on the classpath)
 - [ ] CI pipeline for build verification
 - [ ] Functional copy-reference and help actions on the details screen

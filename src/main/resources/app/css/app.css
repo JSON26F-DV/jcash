@@ -1,0 +1,414 @@
+/*
+ * app.css — card pages (My cards, New card)
+ * Card colour comes ONLY from the style class on the card node:
+ *   styleClass="credit-card card-blue" | card-graphite | card-onyx | card-emerald
+ */
+
+/* ================= PHYSICAL CARD ================= */
+
+.credit-card {
+  -fx-background-radius: 22;
+  -fx-effect: dropshadow(gaussian, rgba(30, 40, 80, 0.18), 18, 0, 0, 8);
+}
+
+.card-blue {
+  -fx-background-color: #3454e1;
+}
+
+.card-graphite {
+  -fx-background-color: #ebebeb;
+}
+
+.card-onyx {
+  -fx-background-color: #22252e;
+}
+
+.card-emerald {
+  -fx-background-color: #0e9f6e;
+}
+
+/* Explicit dashboard variants ensure the compact generated cards retain their selected color. */
+.dashboard-card.card-blue {
+  -fx-background-color: #3454e1;
+}
+
+.dashboard-card.card-graphite {
+  -fx-background-color: #ebebeb;
+}
+
+.dashboard-card.card-onyx {
+  -fx-background-color: #22252e;
+}
+
+.dashboard-card.card-emerald {
+  -fx-background-color: #0e9f6e;
+}
+
+.card-body {
+  -fx-padding: 22;
+}
+
+.dashboard-card-body {
+  -fx-padding: 15;
+}
+
+.dashboard-card-body .card-visa {
+  -fx-font-size: 17;
+}
+
+.dashboard-card-body .card-amount {
+  -fx-font-size: 17;
+}
+
+.dashboard-card-number {
+  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-size: 11;
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+}
+
+.dashboard-card-holder,
+.dashboard-card-meta {
+  -fx-font-size: 8;
+  -fx-font-weight: bold;
+  -fx-text-fill: rgba(255, 255, 255, 0.78);
+}
+
+.dashboard-card-expiry {
+  -fx-font-size: 10;
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+}
+
+.card-graphite .dashboard-card-number,
+.card-graphite .dashboard-card-holder,
+.card-graphite .dashboard-card-meta,
+.card-graphite .dashboard-card-expiry {
+  -fx-text-fill: #333948;
+}
+
+.dashboard-mobile {
+  -fx-font-size: 12;
+  -fx-text-fill: #9da3a9;
+}
+
+.dashboard-mobile-label {
+  -fx-font-size: 10;
+  -fx-font-weight: bold;
+  -fx-text-fill: #9da3a9;
+}
+
+.balance-visibility-button {
+  -fx-background-color: transparent;
+  -fx-padding: 5;
+  -fx-cursor: hand;
+}
+
+.balance-visibility-button .ikonli-font-icon,
+.balance-visibility-button SVGPath {
+  -fx-fill: #67707f;
+}
+
+.balance-visibility-button:hover {
+  -fx-background-color: #f1f3f7;
+  -fx-background-radius: 999;
+}
+
+.dashboard-cash-in {
+  -fx-pref-height: 36;
+  -fx-padding: 0 16 0 16;
+}
+
+.dashboard-add-card {
+  -fx-background-color: #f7f9fc;
+  -fx-background-radius: 20;
+  -fx-border-color: #cbd2df;
+  -fx-border-radius: 20;
+  -fx-border-style: dashed;
+  -fx-border-width: 1.5;
+  -fx-cursor: hand;
+}
+
+.dashboard-add-card:hover {
+  -fx-background-color: #eef1fe;
+  -fx-border-color: #3454e1;
+}
+
+.dashboard-add-plus {
+  -fx-font-size: 34;
+  -fx-text-fill: #3454e1;
+}
+
+.dashboard-add-label {
+  -fx-font-size: 12;
+  -fx-font-weight: bold;
+  -fx-text-fill: #67707f;
+}
+
+.card-empty {
+  -fx-font-size: 12;
+  -fx-text-fill: #9da3a9;
+}
+
+.card-load-error {
+  -fx-font-size: 12;
+  -fx-text-fill: #d64545;
+}
+
+/* ---- decorative circles ---- */
+
+.card-circle {
+  -fx-fill: rgba(255, 255, 255, 0.14);
+}
+
+.card-graphite .card-circle {
+  -fx-fill: rgba(255, 255, 255, 0.7);
+}
+
+/* ---- text ---- */
+
+.card-label {
+  -fx-font-size: 10;
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+}
+
+.card-visa {
+  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-size: 24;
+  -fx-font-weight: bold;
+  -fx-font-style: italic;
+  -fx-text-fill: #ffffff;
+}
+
+.card-tiny {
+  -fx-font-size: 11;
+  -fx-text-fill: rgba(255, 255, 255, 0.78);
+}
+
+.card-amount {
+  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-size: 26;
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+}
+
+.card-number {
+  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-size: 15;
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+}
+
+.card-value {
+  -fx-font-size: 9;
+  -fx-font-weight: bold;
+  -fx-text-fill: rgba(255, 255, 255, 0.78);
+}
+
+.card-expiry {
+  -fx-font-size: 13;
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+}
+
+.card-graphite .card-label,
+.card-graphite .card-visa,
+.card-graphite .card-amount,
+.card-graphite .card-number,
+.card-graphite .card-expiry {
+  -fx-text-fill: #333948;
+}
+
+.card-graphite .card-tiny,
+.card-graphite .card-value {
+  -fx-text-fill: rgba(51, 57, 72, 0.7);
+}
+
+/* ---- chip ---- */
+
+.card-chip {
+  -fx-fill: rgba(255, 255, 255, 0.2);
+}
+
+.card-chip-base {
+  -fx-fill: #e0b457;
+}
+
+.card-chip-detail {
+  -fx-fill: transparent;
+  -fx-stroke: #22252e;
+}
+
+.card-graphite .card-chip {
+  -fx-fill: #ffffff;
+}
+
+.card-onyx .card-chip {
+  -fx-fill: #e0b457;
+}
+
+.card-emerald .card-chip {
+  -fx-fill: rgba(255, 255, 255, 0.25);
+}
+
+/* ================= MINI CARD (thumbnail) ================= */
+
+.card-mini {
+  -fx-cursor: hand;
+}
+
+.card-mini.card-blue {
+  -fx-fill: #3454e1;
+}
+
+.card-mini.card-graphite {
+  -fx-fill: #ebebeb;
+}
+
+.card-mini.card-onyx {
+  -fx-fill: #22252e;
+}
+
+.card-mini.card-emerald {
+  -fx-fill: #0e9f6e;
+}
+
+.mini-visa {
+  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-size: 8;
+  -fx-font-weight: bold;
+  -fx-font-style: italic;
+  -fx-text-fill: #ffffff;
+}
+
+.mini-visa-dark {
+  -fx-text-fill: #333948;
+}
+
+/* ================= STYLE TILES ================= */
+
+.style-tile {
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 16;
+  -fx-border-color: transparent;
+  -fx-border-radius: 16;
+  -fx-border-width: 2;
+  -fx-padding: 12;
+  -fx-cursor: hand;
+}
+
+.style-tile:focused {
+  -fx-background-color: #ffffff;
+  -fx-background-insets: 0;
+}
+
+.style-name {
+  -fx-font-size: 12;
+  -fx-font-weight: bold;
+  -fx-text-fill: #333948;
+}
+
+.style-tile-active {
+  -fx-border-color: #3454e1;
+  -fx-border-width: 2;
+  -fx-background-color: #f7f9fc;
+}
+
+/* colour dots used inside the tiles */
+
+.swatch {
+  -fx-background-radius: 9;
+  -fx-border-radius: 9;
+  -fx-border-color: transparent;
+  -fx-border-width: 2;
+}
+
+.swatch.blue {
+  -fx-background-color: #3454e1;
+}
+
+.swatch.graphite {
+  -fx-background-color: #ebebeb;
+}
+
+.swatch.onyx {
+  -fx-background-color: #22252e;
+}
+
+.swatch.emerald {
+  -fx-background-color: #0e9f6e;
+}
+
+/* ================= FORM BITS ================= */
+
+.field-input {
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 12;
+  -fx-border-color: #dde2ea;
+  -fx-border-radius: 12;
+  -fx-border-width: 1;
+  -fx-padding: 0 14 0 14;
+  -fx-pref-height: 44;
+  -fx-font-size: 13;
+  -fx-text-fill: #333948;
+}
+
+.field-input:focused {
+  -fx-border-color: #3454e1;
+}
+
+.seg-card {
+  -fx-background-color: transparent;
+  -fx-background-radius: 16;
+  -fx-border-color: transparent;
+  -fx-border-radius: 16;
+  -fx-border-width: 1;
+  -fx-padding: 10 12 10 12;
+  -fx-cursor: hand;
+}
+
+.seg-card:focused {
+  -fx-background-color: transparent;
+  -fx-background-insets: 0;
+}
+
+.seg-card-active:focused {
+  -fx-background-color: #ffffff;
+}
+
+.seg-card-active {
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 16;
+  -fx-border-color: #dde2ea;
+  -fx-border-radius: 16;
+  -fx-border-width: 1;
+}
+
+.seg-name {
+  -fx-font-size: 13;
+  -fx-font-weight: bold;
+  -fx-text-fill: #333948;
+}
+
+.seg-name-active {
+  -fx-text-fill: #3454e1;
+}
+
+.seg-hint {
+  -fx-font-size: 10;
+  -fx-text-fill: #9da3a9;
+}
+
+.ghost-link {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-padding: 0;
+  -fx-font-size: 12;
+  -fx-text-fill: #9da3a9;
+  -fx-cursor: hand;
+}
+
+.ghost-link:hover {
+  -fx-text-fill: #3454e1;
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane fx:id="deletedAccountRoot" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-font-family:'Inter';" stylesheets="@../../css/Style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-background-color:#FFFFFF; -fx-border-color:transparent transparent #EEF1F6 transparent;">
+         <padding><Insets bottom="20" left="48" right="48" top="20" /></padding>
+         <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:18px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="JCash Bank" />
+         <Region HBox.hgrow="ALWAYS" />
+         <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Account access" />
+      </HBox>
+   </top>
+
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color:transparent; -fx-background:transparent;">
+         <content>
+            <VBox alignment="TOP_CENTER" style="-fx-background-color:transparent;">
+               <padding><Insets bottom="48" left="28" right="28" top="40" /></padding>
+
+               <VBox maxWidth="720" spacing="24" style="-fx-background-color:#FFFFFF; -fx-background-radius:26; -fx-border-color:#EEF1F6; -fx-border-radius:26; -fx-effect:dropshadow(gaussian,rgba(30,40,80,0.08),20,0,0,8);">
+                  <padding><Insets bottom="40" left="48" right="48" top="40" /></padding>
+
+                  <!-- Heading -->
+                  <VBox alignment="CENTER" spacing="14">
+                     <StackPane minHeight="56" minWidth="56">
+                        <Circle fill="#FFEFF3" radius="28" />
+                        <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:24px; -fx-font-weight:bold; -fx-text-fill:#E2557A;" text="!" />
+                     </StackPane>
+                     <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:26px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="We can't open this account" wrapText="true" />
+                     <Label style="-fx-font-size:13px; -fx-text-fill:#67707F;" text="This account is no longer available for sign-in. Here are the usual reasons why this page appears." wrapText="true" />
+                  </VBox>
+
+                  <!-- Reasons -->
+                  <VBox spacing="10">
+                     <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="WHY YOU ARE SEEING THIS" />
+
+                     <VBox spacing="4" style="-fx-background-color:#F7F9FC; -fx-background-radius:14; -fx-padding:14 16 14 16;">
+                        <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Account was deleted" />
+                        <Label style="-fx-font-size:12px; -fx-text-fill:#67707F;" text="You or an authorised representative closed this account. Deleted accounts can no longer be used to sign in or receive money." wrapText="true" />
+                     </VBox>
+
+                     <VBox spacing="4" style="-fx-background-color:#F7F9FC; -fx-background-radius:14; -fx-padding:14 16 14 16;">
+                        <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Account is banned or restricted" />
+                        <Label style="-fx-font-size:12px; -fx-text-fill:#67707F;" text="The account was suspended for violating the account terms, suspected fraud, or a legal requirement. Access stays closed while the restriction is in place." wrapText="true" />
+                     </VBox>
+
+                     <VBox spacing="4" style="-fx-background-color:#F7F9FC; -fx-background-radius:14; -fx-padding:14 16 14 16;">
+                        <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Account is under review" />
+                        <Label style="-fx-font-size:12px; -fx-text-fill:#67707F;" text="A security or compliance check is in progress. Sign-in stays blocked until the review is finished." wrapText="true" />
+                     </VBox>
+                  </VBox>
+
+                  <!-- Support -->
+                  <VBox spacing="10" style="-fx-background-color:#EEF1FE; -fx-background-radius:16; -fx-padding:18 20 18 20;">
+                     <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="Still need help?" />
+                     <Label style="-fx-font-size:12px; -fx-text-fill:#333948;" text="Visit any JCash Bank branch and ask for account support. Our staff can check the status of your account and explain the next steps." wrapText="true" />
+                     <Label style="-fx-font-size:12px; -fx-text-fill:#67707F;" text="Please bring one valid government-issued ID and, if available, the mobile number or reference number linked to the account." wrapText="true" />
+                     <Label style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="Branch hours: Monday to Friday, 9:00 AM – 4:00 PM" wrapText="true" />
+                  </VBox>
+
+                  <Label style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="For your security, account status is never discussed over chat or email." wrapText="true" />
+               </VBox>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

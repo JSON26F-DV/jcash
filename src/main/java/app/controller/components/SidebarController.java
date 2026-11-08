@@ -19,6 +19,8 @@ public class SidebarController extends HeaderController {
     @FXML
     private Button navCashInButton;
     @FXML
+    private Button navCardsButton;
+    @FXML
     private Button navExpressSendButton;
     @FXML
     private Button navTransactionsButton;
@@ -33,6 +35,7 @@ public class SidebarController extends HeaderController {
     public void initialize() {
         highlight(navDashboardButton, AppRoutes.DASHBOARD, AppRoutes::dashboard);
         highlight(navCashInButton, AppRoutes.CASH_IN, AppRoutes::cashIn);
+        highlight(navCardsButton, AppRoutes.CARDS, AppRoutes::cards);
         highlight(navExpressSendButton, AppRoutes.EXPRESS_SEND, AppRoutes::expressSend);
         highlight(navTransactionsButton, AppRoutes.HISTORY, AppRoutes::history);
         highlight(navSettingsButton, AppRoutes.SETTINGS, AppRoutes::settings);

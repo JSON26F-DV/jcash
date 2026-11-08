@@ -38,6 +38,11 @@ public class AuthService {
             return false;
         }
 
+        if (userDAO.isDeleted(mobile)) {
+            message = "Account deleted.";
+            return false;
+        }
+
         if (!PinUtil.matches(pin, user.getPin())) {
             attempt++;
             if (attempt >= 3) {
@@ -52,6 +57,10 @@ public class AuthService {
         message = "";
         UserSession.start(user);
         return true;
+    }
+
+    public boolean deleteAccount(long id) {
+        return userDAO.markDeleted(id);
     }
 
     public boolean register(User user) {

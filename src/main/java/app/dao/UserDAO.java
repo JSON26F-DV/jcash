@@ -128,6 +128,25 @@ public class UserDAO implements DAO<User> {
                 .execute()) == 1;
     }
 
+    public boolean isDeleted(String mobileNumber) {
+        if (mobileNumber == null || mobileNumber.isBlank()) {
+            return false;
+        }
+        return DatabaseConnection.get().withHandle(handle -> handle.createQuery(
+                "SELECT is_deleted FROM users WHERE mobile_number = :mobile LIMIT 1")
+                .bind("mobile", mobileNumber.trim())
+                .mapTo(Integer.class)
+                .findOne()
+                .orElse(0)) == 1;
+    }
+
+    public boolean markDeleted(long id) {
+        return DatabaseConnection.get().withHandle(handle -> handle.createUpdate(
+                "UPDATE users SET is_deleted = 1 WHERE id = :id")
+                .bind("id", id)
+                .execute()) == 1;
+    }
+
     public BigDecimal getBalanceById(long id) {
         return DatabaseConnection.get().withHandle(handle -> handle.createQuery(
                 "SELECT balance FROM users WHERE id = :id")

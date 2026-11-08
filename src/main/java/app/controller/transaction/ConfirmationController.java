@@ -61,7 +61,7 @@ public class ConfirmationController extends HeaderController {
             cashBalanceLabel.setText("₱" + user.getBalance());
         }
         if (receiver != null) {
-            recipientNameLabel.setText(receiver.getFirstName() + " " + receiver.getLastName());
+            recipientNameLabel.setText(maskName(receiver.getFirstName()) + " " + maskName(receiver.getLastName()));
             recipientInitialsLabel.setText(initials(receiver));
             recipientNumberLabel.setText(receiver.getMobileNumber());
         }
@@ -109,6 +109,13 @@ public class ConfirmationController extends HeaderController {
             last = user.getLastName().substring(0, 1);
         }
         return (first + last).toUpperCase();
+    }
+
+    private String maskName(String name) {
+        if (name == null || name.length() <= 3) {
+            return name == null ? "" : name;
+        }
+        return name.substring(0, 2) + "*".repeat(name.length() - 3) + name.substring(name.length() - 1);
     }
 
     private String lastFour(String mobile) {

@@ -1,6 +1,11 @@
 package app.dao;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -61,6 +66,29 @@ public class TransactionDAO implements DAO<Transaction> {
             }
             return true;
         });
+    }
+
+    public long insertCardFee(Connection connection, long userId, BigDecimal amount, String cardType)
+            throws SQLException {
+        String sql = "INSERT INTO transactions "
+                + "(sender_id, receiver_id, amount, description, category, message) "
+                + "VALUES (?, NULL, ?, ?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            statement.setLong(1, userId);
+            statement.setBigDecimal(2, amount);
+            statement.setString(3, "Card creation fee for " + cardType + " card");
+            statement.setString(4, "Card fee");
+            statement.setString(5, "New card creation fee");
+            if (statement.executeUpdate() != 1) {
+                throw new SQLException("Card fee transaction was not recorded.");
+            }
+            try (ResultSet keys = statement.getGeneratedKeys()) {
+                if (!keys.next()) {
+                    throw new SQLException("Card fee transaction did not return an ID.");
+                }
+                return keys.getLong(1);
+            }
+        }
     }
 
     private void move(org.jdbi.v3.core.Handle handle, Long userId, BigDecimal delta) {

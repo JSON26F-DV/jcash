@@ -27,7 +27,10 @@ public final class AppRoutes {
     public static final String CONFIRMATION = "/app/view/auth/Confirmation.fxml";
     public static final String DETAILS = "/app/view/customer/Details.fxml";
     public static final String HISTORY = "/app/view/customer/History.fxml";
+    public static final String CARDS = "/app/view/customer/cards.fxml";
+    public static final String NEW_CARD = "/app/view/customer/new_card.fxml";
     public static final String SETTINGS = "/app/view/customer/Settings.fxml";
+    public static final String DELETED_ACCOUNT = "/app/view/pages/DeletedAccount.fxml";
 
     public static void init(Stage primaryStage) {
         stage = primaryStage;
@@ -35,6 +38,10 @@ public final class AppRoutes {
 
     public static void landing() {
         go(LANDING);
+    }
+
+    public static void deletedAccount() {
+        go(DELETED_ACCOUNT);
     }
 
     public static void forgotPassword() {
@@ -83,6 +90,14 @@ public final class AppRoutes {
 
     public static void history() {
         go(HISTORY);
+    }
+
+    public static void cards() {
+        go(CARDS);
+    }
+
+    public static void newCard() {
+        go(NEW_CARD);
     }
 
     public static void settings() {

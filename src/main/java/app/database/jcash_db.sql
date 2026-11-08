@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 07, 2026 at 04:24 AM
+-- Generation Time: Nov 08, 2026 at 08:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `jcash_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cards`
+--
+
+CREATE TABLE `cards` (
+  `id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `card_type` enum('debit','credit','prepaid') NOT NULL,
+  `color` enum('blue','graphite','onyx','emerald') NOT NULL DEFAULT 'blue',
+  `card_number` varchar(19) NOT NULL,
+  `expiry_date` char(5) NOT NULL,
+  `pin_hash` varchar(255) NOT NULL,
+  `is_frozen` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cards`
+--
+
+INSERT INTO `cards` (`id`, `user_id`, `card_type`, `color`, `card_number`, `expiry_date`, `pin_hash`, `is_frozen`, `created_at`) VALUES
+(1, 2, 'credit', 'emerald', '6626 7518 6453 7397', '11/31', '$2a$10$SZeLmgCDbpVAUh2ggTrcaufcSD6bbBVyHqh33Y2koWpRWf6tD0M0i', 0, '2026-11-08 05:19:37'),
+(2, 2, 'prepaid', 'graphite', '6547 4693 6573 3603', '11/31', '$2a$10$i.Epm.xfbNJfazTut7EgCunW/ftYC1DXmjYcexjrx6s.G8/8ZER5S', 0, '2026-11-08 07:03:20'),
+(3, 2, 'debit', 'onyx', '5043 2809 9547 5740', '11/31', '$2a$10$Xa6z67GXrPHsA9spB6BZIOWgQMNckI8zpxWi3dsEO3VmHeYwZRTqS', 0, '2026-11-08 07:03:40');
 
 -- --------------------------------------------------------
 
@@ -68,22 +95,31 @@ CREATE TABLE `users` (
   `last_name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `balance` decimal(15,2) NOT NULL DEFAULT 0.00,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL
 ) ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `mobile_number`, `pin`, `first_name`, `last_name`, `email`, `balance`, `created_at`) VALUES
-(1, '09876543212', '481f6cc0511143ccdd7e2d1b1b94faf0a700a8b49cd13922a70b5ae28acaa8c5', 'jason', 'begornia', 'jasonbegornia57@gmail.com', 2482.00, '2026-10-31 12:44:01'),
-(2, '09945646355', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tung tung', 'sahur', 'tralala@gmail.com', 2910.00, '2026-10-31 12:45:22'),
-(3, '09123456789', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tralalero', 'tralala', 'tralala26f@gmail.com', 473.00, '2026-11-04 15:57:57'),
-(18, '09876543217', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tralalero', 'tralala', 'tralalero26f@email.com', 0.00, '2026-11-07 11:10:24');
+INSERT INTO `users` (`id`, `mobile_number`, `pin`, `first_name`, `last_name`, `email`, `balance`, `created_at`, `is_deleted`) VALUES
+(1, '09876543212', '481f6cc0511143ccdd7e2d1b1b94faf0a700a8b49cd13922a70b5ae28acaa8c5', 'jason', 'begornia', 'jasonbegornia57@gmail.com', 2482.00, '2026-10-31 12:44:01', 0),
+(2, '09945646355', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tung tung', 'sahur', 'tralala@gmail.com', 2160.00, '2026-10-31 12:45:22', 0),
+(3, '09123456789', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tralalero', 'tralala', 'tralala26f@gmail.com', 473.00, '2026-11-04 15:57:57', 0),
+(18, '09876543217', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tralalero', 'tralala', 'tralalero26f@email.com', 0.00, '2026-11-07 11:10:24', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cards`
+--
+ALTER TABLE `cards`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uq_cards_card_number` (`card_number`),
+  ADD KEY `idx_cards_user_id` (`user_id`);
 
 --
 -- Indexes for table `transactions`
@@ -107,6 +143,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `cards`
+--
+ALTER TABLE `cards`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -121,6 +163,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cards`
+--
+ALTER TABLE `cards`
+  ADD CONSTRAINT `fk_cards_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `transactions`
