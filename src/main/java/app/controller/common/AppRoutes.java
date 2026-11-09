@@ -2,6 +2,8 @@ package app.controller.common;
 
 import java.io.IOException;
 
+import app.i18n.I18n;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -106,7 +108,12 @@ public final class AppRoutes {
 
     private static void go(String path) {
         try {
-            Parent root = FXMLLoader.load(AppRoutes.class.getResource(path));
+            FXMLLoader loader = new FXMLLoader(AppRoutes.class.getResource(path), I18n.bundle());
+            Parent root = loader.load();
+            root.getStylesheets().add(AppRoutes.class.getResource("/app/css/i18n.css").toExternalForm());
+            if (java.util.Set.of("ja", "ko", "zh").contains(I18n.locale().getLanguage())) {
+                root.getStyleClass().add("locale-cjk");
+            }
             if (stage.getScene() == null) {
                 stage.setScene(new Scene(root));
             } else {
@@ -116,6 +123,19 @@ public final class AppRoutes {
             currentPage = path;
         } catch (IOException e) {
             throw new IllegalStateException("Cannot open " + path + ": " + e.getMessage(), e);
+        }
+    }
+
+    public static void setLanguage(String tag) {
+        I18n.setLanguage(tag);
+        reload();
+    }
+
+    public static void reload() {
+        if (currentPage == null) {
+            landing();
+        } else {
+            go(currentPage);
         }
     }
 

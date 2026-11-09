@@ -11,8 +11,8 @@ import app.model.User;
 
 public class UserDAO implements DAO<User> {
 
-    private static final String INSERT = "INSERT INTO users (mobile_number, pin, first_name, last_name, email, balance, created_at) "
-            + "VALUES (:mobileNumber, :pin, :firstName, :lastName, :email, :balance, NOW())";
+    private static final String INSERT = "INSERT INTO users (mobile_number, pin, first_name, last_name, email, balance, created_at, is_deleted) "
+            + "VALUES (:mobileNumber, :pin, :firstName, :lastName, :email, :balance, NOW(), 0)";
     private static final String SELECT_ALL = "SELECT * FROM users";
     private static final String SELECT_ONE = "SELECT * FROM users WHERE id = :id";
     private static final String SELECT_BY_MOBILE = "SELECT * FROM users WHERE mobile_number = :mobile LIMIT 1";

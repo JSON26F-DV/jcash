@@ -13,10 +13,10 @@
    <top>
       <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-background-color:#FFFFFF; -fx-border-color:transparent transparent #EEF1F6 transparent;">
          <padding><Insets bottom="20" left="48" right="48" top="20" /></padding>
-         <Button onAction="#returnToLanding" styleClass="policy-back-button" text="← Back" />
+         <Button onAction="#returnToLanding" styleClass="policy-back-button" text="%common.back" />
          <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:18px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="JCash Bank" />
          <Region HBox.hgrow="ALWAYS" />
-         <Label fx:id="privacyUpdatedLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Last updated: October 27, 2026" />
+         <Label fx:id="privacyUpdatedLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="%policy.updated" />
       </HBox>
    </top>
    <center>
@@ -27,17 +27,17 @@
                <VBox maxWidth="840" spacing="24" style="-fx-background-color:#FFFFFF; -fx-background-radius:26; -fx-border-color:#EEF1F6; -fx-border-radius:26; -fx-effect:dropshadow(gaussian,rgba(30,40,80,0.08),20,0,0,8);">
                   <padding><Insets bottom="40" left="48" right="48" top="40" /></padding>
                   <VBox spacing="8">
-                     <Label fx:id="privacyTitleLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:30px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Privacy Policy" wrapText="true" />
-                     <Label style="-fx-font-size:14px; -fx-text-fill:#67707F;" text="How information may be collected, used, and protected." wrapText="true" />
+                     <Label fx:id="privacyTitleLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:30px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%privacy.title" wrapText="true" />
+                     <Label style="-fx-font-size:14px; -fx-text-fill:#67707F;" text="%privacy.subtitle" wrapText="true" />
                   </VBox>
                   <VBox spacing="18">
-                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="1. Information we handle" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="Depending on the services you use, information may include your contact and account details, identity verification information, transactions, and technical data needed to secure and operate the service." wrapText="true" /></VBox>
-                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="2. How information is used" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="Information may be used to provide banking services, process transactions, verify identity, prevent fraud, maintain security, meet legal obligations, and respond to support requests." wrapText="true" /></VBox>
-                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="3. Sharing and disclosure" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="Information may be shared with service providers supporting the bank, transaction participants, or authorities where required or permitted by applicable law. We do not describe this sample page as a substitute for the bank’s formal privacy notice." wrapText="true" /></VBox>
-                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="4. Security and retention" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="Appropriate safeguards are used to protect information. Data is retained only as needed for service, security, and legal purposes, subject to applicable retention requirements." wrapText="true" /></VBox>
-                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="5. Your choices and questions" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="Your privacy rights and available choices depend on your location and applicable law. Contact the bank through its official support channels for information about requests, corrections, or privacy questions." wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%privacy.s1.title" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="%privacy.s1.body" wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%privacy.s2.title" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="%privacy.s2.body" wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%privacy.s3.title" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="%privacy.s3.body" wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%privacy.s4.title" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="%privacy.s4.body" wrapText="true" /></VBox>
+                     <VBox spacing="6"><Label style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%privacy.s5.title" /><Label style="-fx-font-size:13px; -fx-text-fill:#67707F; -fx-line-spacing:4px;" text="%privacy.s5.body" wrapText="true" /></VBox>
                   </VBox>
-                  <Label fx:id="privacyDisclaimerLabel" style="-fx-background-color:#F7F9FC; -fx-background-radius:14; -fx-padding:14; -fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="This page is a sample interface. Replace this text with the bank’s approved privacy notice before release." wrapText="true" />
+                  <Label fx:id="privacyDisclaimerLabel" style="-fx-background-color:#F7F9FC; -fx-background-radius:14; -fx-padding:14; -fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="%privacy.disclaimer" wrapText="true" />
                </VBox>
             </VBox>
          </content>

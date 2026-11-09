@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 08, 2026 at 08:54 AM
+-- Generation Time: Nov 08, 2026 at 02:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,9 +44,10 @@ CREATE TABLE `cards` (
 --
 
 INSERT INTO `cards` (`id`, `user_id`, `card_type`, `color`, `card_number`, `expiry_date`, `pin_hash`, `is_frozen`, `created_at`) VALUES
-(1, 2, 'credit', 'emerald', '6626 7518 6453 7397', '11/31', '$2a$10$SZeLmgCDbpVAUh2ggTrcaufcSD6bbBVyHqh33Y2koWpRWf6tD0M0i', 0, '2026-11-08 05:19:37'),
-(2, 2, 'prepaid', 'graphite', '6547 4693 6573 3603', '11/31', '$2a$10$i.Epm.xfbNJfazTut7EgCunW/ftYC1DXmjYcexjrx6s.G8/8ZER5S', 0, '2026-11-08 07:03:20'),
-(3, 2, 'debit', 'onyx', '5043 2809 9547 5740', '11/31', '$2a$10$Xa6z67GXrPHsA9spB6BZIOWgQMNckI8zpxWi3dsEO3VmHeYwZRTqS', 0, '2026-11-08 07:03:40');
+(5, 21, 'debit', 'onyx', '5706 2320 1240 6392', '11/31', '$2a$10$qyMU4wOBWV/nTe/6moGqi.kOvhR.s9jSKVyWg3DzbKmrLsCV9GcZO', 0, '2026-11-08 10:14:05'),
+(6, 21, 'credit', 'emerald', '6101 2415 6930 0879', '11/31', '$2a$10$bu7dD84mI7E5Ylhlzd57SO3SQ1GH3lMx329jg9ChdrnWTydcqQPWm', 0, '2026-11-08 10:15:16'),
+(7, 22, 'prepaid', 'graphite', '5328 7688 0938 8328', '11/31', '$2a$10$LrUuAgJVt1J.hCR1A8kPZ.UV9xM/8OopdwRzc.TK4WL2sMZjvl.LC', 0, '2026-11-08 11:08:03'),
+(8, 21, 'prepaid', 'blue', '7886 4273 1342 8120', '11/31', '$2a$10$ux4Tpga/BfM7g9b/yAPcZeIfgJQGXTwSNB.sbIEmigFLXwhsqEWc.', 0, '2026-11-08 13:09:26');
 
 -- --------------------------------------------------------
 
@@ -71,15 +72,19 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `sender_id`, `receiver_id`, `amount`, `description`, `category`, `message`, `created_at`, `updated_at`) VALUES
-(47, NULL, 1, 100.00, 'Cash in of user 1', 'Cash in', '', '2026-11-06 10:02:02', '2026-11-06 10:02:02'),
-(48, 1, 2, 121.00, 'Transfer from 09876543212 to 09945646355', 'Send Money', 'hello world', '2026-11-06 10:02:10', '2026-11-06 10:02:10'),
-(49, NULL, 1, 750.00, 'Cash in of user 1', 'Cash in', '', '2026-11-06 10:02:27', '2026-11-06 10:02:27'),
-(50, NULL, 1, 250.00, 'Cash in of user 1', 'Cash in', '', '2026-11-06 10:02:36', '2026-11-06 10:02:36'),
-(51, 1, 3, 175.00, 'Transfer from 09876543212 to 09123456789', 'Send Money', 'nam', '2026-11-06 10:03:10', '2026-11-06 10:03:10'),
-(52, NULL, 1, 100.00, 'Cash in of user 1', 'Cash in', '', '2026-11-06 18:47:08', '2026-11-06 18:47:08'),
-(53, 1, 2, 121.00, 'Transfer from 09876543212 to 09945646355', 'Send Money', 'hello world', '2026-11-06 18:47:18', '2026-11-06 18:47:18'),
-(54, NULL, 1, 100.00, 'Cash in of user 1', 'Cash in', '', '2026-11-07 11:09:47', '2026-11-07 11:09:47'),
-(55, 1, 2, 121.00, 'Transfer from 09876543212 to 09945646355', 'Send Money', 'hello world', '2026-11-07 11:09:53', '2026-11-07 11:09:53');
+(60, NULL, 21, 650.00, 'Cash in of user 21', 'Cash in', '', '2026-11-08 18:13:45', '2026-11-08 18:13:45'),
+(61, 21, NULL, 250.00, 'Card creation fee for debit card', 'Card fee', 'New card creation fee', '2026-11-08 18:14:05', '2026-11-08 18:14:05'),
+(62, 21, 20, 100.00, 'Transfer from 09876543212 to 09876543217', 'Send Money', 'hello world', '2026-11-08 18:14:44', '2026-11-08 18:14:44'),
+(63, NULL, 21, 121.00, 'Cash in of user 21', 'Cash in', '', '2026-11-08 18:15:00', '2026-11-08 18:15:00'),
+(64, NULL, 21, 320.00, 'Cash in of user 21', 'Cash in', '', '2026-11-08 18:15:07', '2026-11-08 18:15:07'),
+(65, 21, NULL, 250.00, 'Card creation fee for credit card', 'Card fee', 'New card creation fee', '2026-11-08 18:15:16', '2026-11-08 18:15:16'),
+(66, NULL, 22, 100.00, 'Cash in of user 22', 'Cash in', '', '2026-11-08 19:07:09', '2026-11-08 19:07:09'),
+(67, 22, 20, 58.00, 'Transfer from 09945646355 to 09876543217', 'Send Money', 'hello jason', '2026-11-08 19:07:40', '2026-11-08 19:07:40'),
+(68, NULL, 22, 500.00, 'Cash in of user 22', 'Cash in', '', '2026-11-08 19:07:50', '2026-11-08 19:07:50'),
+(69, 22, NULL, 250.00, 'Card creation fee for prepaid card', 'Card fee', 'New card creation fee', '2026-11-08 19:08:03', '2026-11-08 19:08:03'),
+(70, NULL, 21, 121.00, 'Cash in of user 21', 'Cash in', '', '2026-11-08 20:21:15', '2026-11-08 20:21:15'),
+(71, 21, 22, 121.00, 'Transfer from 09876543212 to 09945646355', 'Send Money', 'Hello World', '2026-11-08 20:23:11', '2026-11-08 20:23:11'),
+(72, 21, NULL, 250.00, 'Card creation fee for prepaid card', 'Card fee', 'New card creation fee', '2026-11-08 21:09:26', '2026-11-08 21:09:26');
 
 -- --------------------------------------------------------
 
@@ -96,7 +101,7 @@ CREATE TABLE `users` (
   `email` varchar(200) NOT NULL,
   `balance` decimal(15,2) NOT NULL DEFAULT 0.00,
   `created_at` datetime NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ;
 
 --
@@ -104,10 +109,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `mobile_number`, `pin`, `first_name`, `last_name`, `email`, `balance`, `created_at`, `is_deleted`) VALUES
-(1, '09876543212', '481f6cc0511143ccdd7e2d1b1b94faf0a700a8b49cd13922a70b5ae28acaa8c5', 'jason', 'begornia', 'jasonbegornia57@gmail.com', 2482.00, '2026-10-31 12:44:01', 0),
-(2, '09945646355', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tung tung', 'sahur', 'tralala@gmail.com', 2160.00, '2026-10-31 12:45:22', 0),
-(3, '09123456789', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tralalero', 'tralala', 'tralala26f@gmail.com', 473.00, '2026-11-04 15:57:57', 0),
-(18, '09876543217', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tralalero', 'tralala', 'tralalero26f@email.com', 0.00, '2026-11-07 11:10:24', 0);
+(20, '09876543217', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tralalero', 'tralala', 'tralalero26f@email.com', 158.00, '2026-11-08 18:12:33', 0),
+(21, '09876543212', '481f6cc0511143ccdd7e2d1b1b94faf0a700a8b49cd13922a70b5ae28acaa8c5', 'jason', 'begornia', 'jasonbegornia57@gmail.com', 241.00, '2026-11-08 18:13:20', 0),
+(22, '09945646355', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'tung tung', 'sahur', 'triplet@gmail.com', 413.00, '2026-11-08 19:03:01', 0),
+(23, '09123456789', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'ballerina', 'cappuccina', 'ballerinacappuccina57@gmail.com', 0.00, '2026-11-08 20:05:33', 1);
 
 --
 -- Indexes for dumped tables
@@ -146,7 +151,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cards`
 --
 ALTER TABLE `cards`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `transactions`

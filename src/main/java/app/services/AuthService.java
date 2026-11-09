@@ -3,6 +3,7 @@ package app.services;
 import java.util.Locale;
 
 import app.dao.UserDAO;
+import app.i18n.I18n;
 import app.model.User;
 import app.session.UserSession;
 import app.util.PinUtil;
@@ -27,28 +28,28 @@ public class AuthService {
 
     public boolean login(String mobile, String pin) {
         if (attempt >= 3) {
-            message = "Too many failed attempts. Exiting.";
+            message = I18n.get("auth.lockout");
             return false;
         }
 
         User user = userDAO.findByMobileNumber(mobile);
 
         if (user == null) {
-            message = "Invalid mobile number.";
+            message = I18n.get("auth.invalidMobile");
             return false;
         }
 
         if (userDAO.isDeleted(mobile)) {
-            message = "Account deleted.";
+            message = I18n.get("auth.deleted");
             return false;
         }
 
         if (!PinUtil.matches(pin, user.getPin())) {
             attempt++;
             if (attempt >= 3) {
-                message = "Too many failed attempts. Exiting.";
+                message = I18n.get("auth.lockout");
             } else {
-                message = "Invalid PIN. " + (3 - attempt) + " attempt(s) left.";
+                message = I18n.format("auth.invalidPinAttempts", 3 - attempt);
             }
             return false;
         }
@@ -65,34 +66,40 @@ public class AuthService {
 
     public boolean register(User user) {
         if (user == null) {
-            message = "Registration failed.";
+            message = I18n.get("register.error.generic");
             return false;
         }
 
-        String mobile = user.getMobileNumber().trim();
-        String email = user.getEmail().trim().toLowerCase(Locale.ROOT);
+        String mobile = user.getMobileNumber() == null ? "" : user.getMobileNumber().trim();
+        String email = user.getEmail() == null ? "" : user.getEmail().trim().toLowerCase(Locale.ROOT);
 
         user.setMobileNumber(mobile);
         user.setEmail(email);
 
+        if (mobile.isBlank() || email.isBlank() || user.getPin() == null || user.getPin().isBlank()) {
+            message = I18n.get("register.error.generic");
+            return false;
+        }
+
         if (userDAO.findByMobileNumber(mobile) != null) {
-            message = "Mobile number is already registered.";
+            message = I18n.get("register.error.mobileExists");
             return false;
         }
 
         if (userDAO.existsByEmail(email)) {
-            message = "Email is already registered.";
+            message = I18n.get("register.error.emailExists");
             return false;
         }
 
         user.setPin(PinUtil.hash(user.getPin()));
         try {
             if (!userDAO.create(user)) {
-                message = "Registration failed.";
+                message = I18n.get("register.error.generic");
                 return false;
             }
         } catch (RuntimeException e) {
-            message = "Registration failed.";
+            e.printStackTrace();
+            message = I18n.get("register.error.generic");
             return false;
         }
         message = "";

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import app.model.User;
+import app.i18n.I18n;
 import app.services.AuthService;
 import javafx.scene.control.Label;
 
@@ -18,7 +19,7 @@ public abstract class HeaderController {
         if (user == null) {
             return false;
         }
-        welcomeLabel.setText("Hello, " + user.getFirstName() + ". Welcome back.");
+        welcomeLabel.setText(I18n.format("header.welcome", user.getFirstName()));
         return true;
     }
 }

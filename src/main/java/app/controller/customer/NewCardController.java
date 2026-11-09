@@ -10,6 +10,7 @@ import app.controller.common.AppRoutes;
 import app.controller.common.HeaderController;
 import app.dto.view.CardView;
 import app.dto.view.UserRecord;
+import app.i18n.I18n;
 import app.services.CardService;
 import app.services.InsufficientBalanceException;
 import javafx.fxml.FXML;
@@ -108,17 +109,17 @@ public class NewCardController extends HeaderController {
         configureColorButtons();
         if (user == null) {
             createCardButton.setDisable(true);
-            formError.setText("Sign in to create a card.");
+            formError.setText(I18n.get("newCard.signIn"));
             return;
         }
         userRecord = cardService.findUserRecord(user.getId());
         if (userRecord == null) {
             createCardButton.setDisable(true);
-            formError.setText("Unable to load your account.");
+            formError.setText(I18n.get("newCard.accountError"));
             return;
         }
         feeLabel.setText(MONEY.format(CardService.CARD_FEE));
-        balanceLabel.setText("Your balance: " + MONEY.format(userRecord.balances()));
+        balanceLabel.setText(I18n.format("newCard.balance", MONEY.format(userRecord.balances())));
         updateBalanceEligibility();
         updatePreview();
         loadExistingCards();
@@ -294,7 +295,7 @@ public class NewCardController extends HeaderController {
         if (previewCard == null) {
             return;
         }
-        cardTypePreviewLabel.setText(selectedCardType.toUpperCase(Locale.ROOT) + " CARD");
+        cardTypePreviewLabel.setText(CardView.localizedType(selectedCardType).toUpperCase(I18n.locale()) + " CARD");
         cardPurposePreviewLabel.setText(CardView.labelForType(selectedCardType));
         BorderPane body = (BorderPane) previewCard.getChildren().get(1);
         HBox footer = (HBox) body.getBottom();
@@ -319,11 +320,11 @@ public class NewCardController extends HeaderController {
         boolean valid = true;
 
         if (pin == null || !pin.matches("\\d{4}")) {
-            pinError.setText("PIN must be exactly 4 digits.");
+            pinError.setText(I18n.get("newCard.pinError"));
             valid = false;
         }
         if (confirmPin == null || !confirmPin.equals(pin)) {
-            confirmPinError.setText("PINs do not match.");
+            confirmPinError.setText(I18n.get("newCard.pinMismatch"));
             valid = false;
         }
         if (!valid) {
@@ -333,13 +334,13 @@ public class NewCardController extends HeaderController {
             CardService.CardCreationResult result = cardService.createCard(
                     userRecord.id(), type, selectedColor, expiryDate, pin);
             userRecord = result.userRecord();
-            balanceLabel.setText("Your balance: " + MONEY.format(userRecord.balances()));
+            balanceLabel.setText(I18n.format("newCard.balance", MONEY.format(userRecord.balances())));
             AppRoutes.cards();
         } catch (InsufficientBalanceException exception) {
-            balanceError.setText("Insufficient balance. A new card costs " + MONEY.format(CardService.CARD_FEE) + ".");
+            balanceError.setText(I18n.format("newCard.insufficient", MONEY.format(CardService.CARD_FEE)));
             createCardButton.setDisable(true);
         } catch (RuntimeException exception) {
-            formError.setText("Card creation failed. Please try again.");
+            formError.setText(I18n.get("newCard.createError"));
         }
     }
 
@@ -359,7 +360,7 @@ public class NewCardController extends HeaderController {
         existingCardsList.getChildren().clear();
         List<CardView> existing = cardService.listByUser(userRecord.id());
         if (existing.isEmpty()) {
-            Label none = new Label("No cards yet.");
+            Label none = new Label(I18n.get("newCard.empty"));
             none.getStyleClass().add("card-empty");
             existingCardsList.getChildren().add(none);
             return;
@@ -372,14 +373,17 @@ public class NewCardController extends HeaderController {
             mini.setPrefSize(40, 26);
             mini.setMaxSize(40, 26);
             mini.setStyle("-fx-background-color:" + colorHex(card.color()) + "; -fx-background-radius:7;");
-            Label description = new Label("Visa · " + capitalize(card.cardType()) + " · " + card.maskedNumber());
+            Label description = new Label(
+                    "Visa · " + CardView.localizedType(card.cardType()) + " · " + card.maskedNumber());
             description.setStyle("-fx-font-size:12px; -fx-font-weight:bold; -fx-text-fill:#333948;");
-            Label meta = new Label(capitalize(card.color()) + " · Expires " + card.expiryDate());
+            Label meta = new Label(I18n.format("newCard.cardMeta",
+                    capitalize(I18n.get("newCard.color." + card.color())), card.expiryDate()));
             meta.setStyle("-fx-font-size:10px; -fx-text-fill:#9DA3A9;");
             VBox text = new VBox(2, description, meta);
             Region spacer = new Region();
             HBox.setHgrow(spacer, Priority.ALWAYS);
-            Label status = new Label(card.frozen() ? "FROZEN" : "ACTIVE");
+            Label status = new Label(
+                    I18n.get(card.frozen() ? "cards.frozen" : "cards.active").toUpperCase(I18n.locale()));
             status.setStyle("-fx-font-size:10px; -fx-font-weight:bold; -fx-text-fill:"
                     + (card.frozen() ? "#E2557A" : "#2FA672") + ";");
             row.getChildren().addAll(mini, text, spacer, status);

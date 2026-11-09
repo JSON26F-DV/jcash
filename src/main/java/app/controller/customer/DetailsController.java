@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import app.controller.common.AppRoutes;
 import app.controller.common.HeaderController;
 import app.dto.view.TransactionDetails;
+import app.i18n.I18n;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,7 +43,7 @@ public class DetailsController extends HeaderController {
         if (details == null)
             return;
 
-        transactionTitleLabel.setText(details.title() == null ? "Transaction" : details.title());
+        transactionTitleLabel.setText(details.title() == null ? I18n.get("details.title") : details.title());
         amountValueLabel.setText("₱" + details.amount());
         messageValueLabel.setText(details.message() == null || details.message().isBlank()
                 ? "-"

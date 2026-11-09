@@ -4,8 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.SVGPath?>
 
-<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-padding:12;" stylesheets="@app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.SettingsController">
+<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-padding:12;" stylesheets="@../../css/customer.css, @../../css/app.css, @../../css/Style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.SettingsController">
     <children>
         <BorderPane fx:id="shell" style="-fx-background-color:#FFFFFF; -fx-background-radius:32;">
             <left>
@@ -29,9 +31,9 @@
                                 <Insets bottom="0" left="36" right="36" top="32" />
                             </padding>
                             <children>
-                                <Label fx:id="pageTitleLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="Settings" />
+                                <Label fx:id="pageTitleLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="%settings.title" />
                                 <Label style="-fx-text-fill:#DDE2EA; -fx-font-size:14px;" text="|" />
-                                <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Hello Jane, welcome back." />
+                                <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%settings.welcome" />
                                 <Region HBox.hgrow="ALWAYS" />
                                 <Label fx:id="dateTimeLabel" style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="14:32, 09 October 2026" />
                             </children>
@@ -45,8 +47,8 @@
                                             <children>
                                                 <VBox fx:id="titleBlock" spacing="3">
                                                     <children>
-                                                        <Label fx:id="pageHeadingLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Settings" />
-                                                        <Label fx:id="pageSubtitleLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Your profile and the session you are signed in with." />
+                                                        <Label fx:id="pageHeadingLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%settings.title" />
+                                                        <Label fx:id="pageSubtitleLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="%settings.subtitle" />
                                                     </children>
                                                 </VBox>
 
@@ -76,28 +78,28 @@
                                                             <children>
                                                                 <HBox alignment="CENTER_LEFT" style="-fx-padding:10 0 10 0; -fx-border-color:transparent transparent #EEF1F6 transparent; -fx-border-width:0 0 1 0;">
                                                                     <children>
-                                                                        <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Role" />
+                                                                        <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="%settings.role" />
                                                                         <Region HBox.hgrow="ALWAYS" />
-                                                                        <Label fx:id="roleValueLabel" style="-fx-font-size:12px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Customer" />
+                                                                        <Label fx:id="roleValueLabel" style="-fx-font-size:12px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%settings.customer" />
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_LEFT" style="-fx-padding:10 0 10 0; -fx-border-color:transparent transparent #EEF1F6 transparent; -fx-border-width:0 0 1 0;">
                                                                     <children>
-                                                                        <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Status" />
+                                                                        <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="%settings.status" />
                                                                         <Region HBox.hgrow="ALWAYS" />
-                                                                        <Label fx:id="statusValueLabel" style="-fx-background-color:#E9FBF2; -fx-background-radius:999; -fx-padding:3 10 3 10; -fx-font-size:10px; -fx-font-weight:bold; -fx-text-fill:#2FA672;" text="ACTIVE" />
+                                                                        <Label fx:id="statusValueLabel" style="-fx-background-color:#E9FBF2; -fx-background-radius:999; -fx-padding:3 10 3 10; -fx-font-size:10px; -fx-font-weight:bold; -fx-text-fill:#2FA672;" text="%settings.active" />
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_LEFT" style="-fx-padding:10 0 10 0; -fx-border-color:transparent transparent #EEF1F6 transparent; -fx-border-width:0 0 1 0;">
                                                                     <children>
-                                                                        <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Session started" />
+                                                                        <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="%settings.sessionStarted" />
                                                                         <Region HBox.hgrow="ALWAYS" />
                                                                         <Label fx:id="sessionStartedValueLabel" style="-fx-font-size:12px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="09 Oct 2026, 14:02" />
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_LEFT" style="-fx-padding:10 0 0 0;">
                                                                     <children>
-                                                                        <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Session token" />
+                                                                        <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="%settings.sessionToken" />
                                                                         <Region HBox.hgrow="ALWAYS" />
                                                                         <Label fx:id="sessionTokenValueLabel" style="-fx-font-size:11px; -fx-font-family:'SFMono-Regular', Consolas, monospace; -fx-font-weight:bold; -fx-text-fill:#333948;" text="tok_9f3a…c21b" />
                                                                     </children>
@@ -114,8 +116,8 @@
                                                     <children>
                                                         <VBox spacing="2">
                                                             <children>
-                                                                <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Personal information" />
-                                                                <Label style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="Your account details on file." />
+                                                                <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%settings.personal" />
+                                                                <Label style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="%settings.personalHint" />
                                                             </children>
                                                         </VBox>
                                                         <GridPane fx:id="personalInfoGrid" hgap="16" vgap="14">
@@ -126,25 +128,25 @@
                                                             <children>
                                                                 <VBox spacing="3" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                                     <children>
-                                                                        <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="FULL NAME" />
+                                                                        <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="%settings.fullName" />
                                                                         <Label fx:id="fullNameValueLabel" style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" />
                                                                     </children>
                                                                 </VBox>
                                                                 <VBox spacing="3" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                                     <children>
-                                                                        <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="EMAIL" />
+                                                                        <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="%settings.email" />
                                                                         <Label fx:id="emailValueLabel" style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" />
                                                                     </children>
                                                                 </VBox>
                                                                 <VBox spacing="3" GridPane.columnIndex="0" GridPane.rowIndex="1">
                                                                     <children>
-                                                                        <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="MOBILE NUMBER" />
+                                                                        <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="%settings.mobile" />
                                                                         <Label fx:id="mobileNumberValueLabel" style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" />
                                                                     </children>
                                                                 </VBox>
                                                                 <VBox spacing="3" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                     <children>
-                                                                        <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="BALANCE" />
+                                                                        <Label style="-fx-font-size:11px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;" text="%settings.balance" />
                                                                         <Label fx:id="balanceValueLabel" style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" />
                                                                     </children>
                                                                 </VBox>
@@ -158,22 +160,59 @@
                                                         <Insets bottom="22" left="24" right="24" top="22" />
                                                     </padding>
                                                     <children>
-                                                        <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Quick links" />
-                                                        <Button fx:id="transactionHistoryLinkButton" alignment="CENTER_LEFT" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold; -fx-padding:0 16 0 16;" text="Transaction history">
+                                                        <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%settings.quickLinks" />
+                                                        <Button fx:id="transactionHistoryLinkButton" alignment="CENTER_LEFT" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold; -fx-padding:0 16 0 16;" text="%settings.history">
                                                             <graphic>
                                                                 <SVGPath content="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20z" fill="#3454E1" scaleX="0.65" scaleY="0.65" />
                                                             </graphic>
                                                         </Button>
-                                                        <Button fx:id="dashboardLinkButton" alignment="CENTER_LEFT" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold; -fx-padding:0 16 0 16;" text="Dashboard">
+                                                        <Button fx:id="dashboardLinkButton" alignment="CENTER_LEFT" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold; -fx-padding:0 16 0 16;" text="%settings.dashboard">
                                                             <graphic>
                                                                 <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="#3454E1" scaleX="0.65" scaleY="0.65" />
                                                             </graphic>
                                                         </Button>
-                                                        <Button fx:id="newTransactionLinkButton" alignment="CENTER_LEFT" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold; -fx-padding:0 16 0 16;" text="Express Send">
+                                                        <Button fx:id="newTransactionLinkButton" alignment="CENTER_LEFT" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold; -fx-padding:0 16 0 16;" text="%settings.express">
                                                             <graphic>
                                                                 <SVGPath content="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" fill="#3454E1" scaleX="0.65" scaleY="0.65" />
                                                             </graphic>
                                                         </Button>
+                                                    </children>
+                                                </VBox>
+
+                                                <VBox fx:id="languagePanel" spacing="14" style="-fx-background-color:#FFFFFF; -fx-background-radius:26; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:26; -fx-effect:dropshadow(gaussian, rgba(30,40,80,0.10), 24, 0, 0, 12);">
+                                                    <padding>
+                                                        <Insets bottom="22" left="24" right="24" top="22" />
+                                                    </padding>
+                                                    <children>
+                                                        <VBox spacing="2">
+                                                            <children>
+                                                                <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%settings.language" />
+                                                                <Label style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="%settings.languageHint" />
+                                                            </children>
+                                                        </VBox>
+                                                        <FlowPane hgap="8" vgap="8">
+                                                            <children>
+                                                                <Button fx:id="langEnBtn" id="en" onAction="#changeLanguage" text="English (US)" />
+                                                                <Button fx:id="langFilBtn" id="fil" onAction="#changeLanguage" text="Filipino" />
+                                                                <Button fx:id="langCebBtn" id="ceb" onAction="#changeLanguage" text="Bisaya" />
+                                                                <Button fx:id="langEsBtn" id="es" onAction="#changeLanguage" text="Español" />
+                                                                <Button fx:id="langJaBtn" id="ja" onAction="#changeLanguage" styleClass="footer-cjk-jp" text="日本語" />
+                                                                <Button fx:id="langKoBtn" id="ko" onAction="#changeLanguage" styleClass="footer-cjk-kr" text="한국어" />
+                                                                <Button fx:id="langZhBtn" id="zh" onAction="#changeLanguage" styleClass="footer-cjk-sc" text="中文(简体)" />
+                                                            </children>
+                                                        </FlowPane>
+                                                        <Separator style="-fx-padding: 4 0 4 0;" />
+                                                        <HBox alignment="CENTER_LEFT" spacing="16" styleClass="footer-row">
+                                                            <children>
+                                                                <Label id="en" onMouseClicked="#selectLocale" styleClass="language-text" text="English (US)" />
+                                                                <Label id="fil" onMouseClicked="#selectLocale" styleClass="language-text" text="Filipino" />
+                                                                <Label id="ceb" onMouseClicked="#selectLocale" styleClass="language-text" text="Bisaya" />
+                                                                <Label id="es" onMouseClicked="#selectLocale" styleClass="language-text" text="Español" />
+                                                                <Label id="ja" onMouseClicked="#selectLocale" styleClass="language-text footer-cjk-jp" text="日本語" />
+                                                                <Label id="ko" onMouseClicked="#selectLocale" styleClass="language-text footer-cjk-kr" text="한국어" />
+                                                                <Label id="zh" onMouseClicked="#selectLocale" styleClass="language-text footer-cjk-sc" text="中文(简体)" />
+                                                            </children>
+                                                        </HBox>
                                                     </children>
                                                 </VBox>
 
@@ -182,9 +221,9 @@
                                                         <Insets bottom="22" left="24" right="24" top="22" />
                                                     </padding>
                                                     <children>
-                                                        <Button fx:id="deleteAccountButton" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#F4C7D2; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#E2557A; -fx-font-size:13px; -fx-font-weight:bold; -fx-cursor:hand;" text="Delete account" />
-                                                        <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Session" />
-                                                        <Button fx:id="signOutButton" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold;" text="Sign out">
+                                                        <Button fx:id="deleteAccountButton" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#F4C7D2; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#E2557A; -fx-font-size:13px; -fx-font-weight:bold; -fx-cursor:hand;" text="%settings.delete" />
+                                                        <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%settings.session" />
+                                                        <Button fx:id="signOutButton" maxWidth="Infinity" prefHeight="44" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-width:1; -fx-border-radius:16; -fx-text-fill:#333948; -fx-font-size:13px; -fx-font-weight:bold;" text="%settings.signOut">
                                                             <graphic>
                                                                 <SVGPath content="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" fill="#9DA3A9" scaleX="0.75" scaleY="0.75" />
                                                             </graphic>

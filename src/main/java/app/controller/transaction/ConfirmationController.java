@@ -6,6 +6,7 @@ import app.controller.common.AppRoutes;
 import app.controller.common.HeaderController;
 import app.controller.customer.DetailsController;
 import app.dto.view.TransactionDetails;
+import app.i18n.I18n;
 import app.model.User;
 import app.services.TransactionService;
 import javafx.fxml.FXML;
@@ -67,7 +68,7 @@ public class ConfirmationController extends HeaderController {
         }
         amountLabel.setText("₱" + amount);
         totalAmountLabel.setText("₱" + amount);
-        sendButton.setText("Send ₱" + amount);
+        sendButton.setText(I18n.format("confirmation.send", "₱" + amount));
         confirmCheckBox.selectedProperty().addListener((obs, old, checked) -> setSendEnabled(checked));
         setSendEnabled(false);
         sendButton.setOnAction(event -> send());
@@ -79,14 +80,14 @@ public class ConfirmationController extends HeaderController {
         if (user == null || receiver == null)
             return;
         if (amount.compareTo(user.getBalance()) > 0) {
-            statusMessageLabel.setText("Amount is more than your available balance.");
+            statusMessageLabel.setText(I18n.get("confirmation.error.balance"));
             return;
         }
         if (transactions.send(receiver, amount, message)) {
             DetailsController.select(TransactionDetails.from(transactions.lastTransaction()));
             AppRoutes.details();
         } else {
-            statusMessageLabel.setText("Transfer failed. Please try again.");
+            statusMessageLabel.setText(I18n.get("confirmation.error.failed"));
         }
     }
 

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import app.controller.common.AppRoutes;
 import app.controller.common.HeaderController;
+import app.i18n.I18n;
 import app.model.User;
 import app.services.UserService;
 import javafx.fxml.FXML;
@@ -37,7 +38,7 @@ public class ExpressSendController extends HeaderController {
     public void initialize() {
         if (!setupHeader(welcomeLabel, dateTimeLabel))
             return;
-        balanceLabel.setText("Available Balance: PHP " + user.getBalance());
+        balanceLabel.setText(I18n.format("send.balance", user.getBalance()));
         backButton.setOnAction(event -> AppRoutes.dashboard());
         nextButton.setOnAction(event -> submit());
     }
@@ -45,26 +46,26 @@ public class ExpressSendController extends HeaderController {
     private void submit() {
         User receiver = userService.findByMobileNumber(mobileNumberField.getText());
         if (receiver == null) {
-            errorLabel.setText("Mobile number not found.");
+            errorLabel.setText(I18n.get("send.error.mobile"));
             return;
         }
         if (receiver.getId() == user.getId()) {
-            errorLabel.setText("You cannot send money to your own number.");
+            errorLabel.setText(I18n.get("send.error.self"));
             return;
         }
         BigDecimal amount;
         try {
             amount = new BigDecimal(amountField.getText().trim());
             if (amount.signum() <= 0) {
-                errorLabel.setText("Amount must be greater than zero.");
+                errorLabel.setText(I18n.get("send.error.positive"));
                 return;
             }
         } catch (NumberFormatException | NullPointerException e) {
-            errorLabel.setText("Enter a valid amount.");
+            errorLabel.setText(I18n.get("send.error.invalid"));
             return;
         }
         if (amount.compareTo(user.getBalance()) > 0) {
-            errorLabel.setText("Amount is more than your available balance.");
+            errorLabel.setText(I18n.get("send.error.balance"));
             return;
         }
         String message = "";

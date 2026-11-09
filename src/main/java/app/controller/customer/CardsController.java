@@ -1,12 +1,12 @@
 package app.controller.customer;
 
 import java.util.List;
-import java.util.Locale;
 
 import app.controller.common.AppRoutes;
 import app.controller.common.HeaderController;
 import app.dto.view.CardView;
 import app.dto.view.UserRecord;
+import app.i18n.I18n;
 import app.services.CardService;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -52,16 +52,16 @@ public class CardsController extends HeaderController {
         try {
             userRecord = cardService.findUserRecord(user.getId());
             if (userRecord == null) {
-                showLoadError("Your account could not be found.");
+                showLoadError(I18n.get("cards.accountError"));
                 return;
             }
             cards = cardService.listByUser(userRecord.id());
         } catch (RuntimeException exception) {
-            showLoadError("Cards are temporarily unavailable. Please try again.");
+            showLoadError(I18n.get("cards.loadError"));
             return;
         }
         if (cards.isEmpty()) {
-            Label empty = new Label("You don't have any cards yet.");
+            Label empty = new Label(I18n.get("cards.empty"));
             empty.getStyleClass().add("card-empty");
             cardsGrid.add(empty, 0, 0);
             return;
@@ -113,7 +113,7 @@ public class CardsController extends HeaderController {
 
         HBox top = new HBox();
         top.setAlignment(Pos.CENTER_LEFT);
-        Label type = text(card.cardType().toUpperCase(Locale.ROOT) + " CARD", "card-label");
+        Label type = text(CardView.localizedType(card.cardType()).toUpperCase(I18n.locale()) + " CARD", "card-label");
         Region topSpacer = new Region();
         HBox.setHgrow(topSpacer, Priority.ALWAYS);
         top.getChildren().addAll(type, topSpacer, text("VISA", "card-visa"));
@@ -144,11 +144,11 @@ public class CardsController extends HeaderController {
     private HBox statusRow(CardView card) {
         HBox row = new HBox(8);
         row.setAlignment(Pos.CENTER_LEFT);
-        Label status = new Label(card.frozen() ? "Frozen" : "Active");
+        Label status = new Label(I18n.get(card.frozen() ? "cards.frozen" : "cards.active"));
         status.getStyleClass().addAll("pill", card.frozen() ? "pill-red" : "pill-green");
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
-        Label caption = text("VISA · " + card.cardType().toUpperCase(Locale.ROOT), null);
+        Label caption = text("VISA · " + CardView.localizedType(card.cardType()).toUpperCase(I18n.locale()), null);
         caption.setStyle("-fx-font-size:10px; -fx-font-weight:bold; -fx-text-fill:#9DA3A9;");
         row.getChildren().addAll(status, spacer, caption);
         return row;
@@ -173,7 +173,7 @@ public class CardsController extends HeaderController {
     }
 
     private Button actionButton(CardView card) {
-        Button button = new Button(card.frozen() ? "Unfreeze" : "Freeze");
+        Button button = new Button(I18n.get(card.frozen() ? "cards.unfreeze" : "cards.freeze"));
         button.setMaxWidth(Double.MAX_VALUE);
         button.setPrefHeight(44);
         button.setStyle("-fx-background-radius:16; -fx-border-radius:16; -fx-font-size:13px; -fx-font-weight:bold;");
@@ -183,7 +183,7 @@ public class CardsController extends HeaderController {
                 cardService.toggleFreeze(user.getId(), card.id());
                 AppRoutes.cards();
             } catch (RuntimeException exception) {
-                button.setText("Could not update — retry");
+                button.setText(I18n.get("cards.retry"));
             }
         });
         return button;

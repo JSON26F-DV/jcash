@@ -18,10 +18,16 @@
 
 /* ================= SHELL / SIDEBAR ================= */
 
+.root {
+  -fx-font-family:
+    "Inter", "Plus Jakarta Sans", "Segoe UI", "Helvetica Neue", Arial,
+    "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
+}
+
 .customer-shell {
   -fx-background-color: #f4f6f9;
   -fx-background-radius: 32;
-  -fx-font-family: "Inter", "Segoe UI", sans-serif;
+  -fx-font-family: "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 13;
   -fx-text-fill: #333948;
 }
@@ -48,7 +54,7 @@
 }
 
 .sidebar-brand {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 15;
   -fx-font-weight: bold;
   -fx-text-fill: #333948;
@@ -109,7 +115,7 @@
 }
 
 .user-avatar-letter {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 13;
   -fx-font-weight: bold;
   -fx-text-fill: #ffffff;
@@ -133,7 +139,7 @@
 }
 
 .page-title-muted {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 19;
   -fx-font-weight: bold;
   -fx-text-fill: #9da3a9;
@@ -188,7 +194,7 @@
 }
 
 .panel-title {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 15;
   -fx-font-weight: bold;
   -fx-text-fill: #333948;
@@ -202,7 +208,7 @@
 }
 
 .page-title {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 19;
   -fx-font-weight: bold;
   -fx-text-fill: #333948;
@@ -214,7 +220,7 @@
 }
 
 .section-title {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 15;
   -fx-font-weight: bold;
   -fx-text-fill: #333948;
@@ -334,7 +340,7 @@
 /* ================= BUTTONS ================= */
 
 .btn {
-  -fx-font-family: "Inter", "Segoe UI", sans-serif;
+  -fx-font-family: "Inter", "Plus Jakarta Sans", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 13;
   -fx-font-weight: bold;
   -fx-background-radius: 16;
@@ -460,7 +466,7 @@
 }
 
 .card-number {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 17;
   -fx-font-weight: bold;
   -fx-text-fill: #ffffff;
@@ -473,7 +479,7 @@
 /* PIN digits: letter-spaced look comes from the FXML text ("4 8 2 1");
    JavaFX CSS has no letter-spacing property. */
 .pin {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 15;
   -fx-font-weight: bold;
   -fx-text-fill: #333948;
@@ -525,7 +531,7 @@
 }
 
 .acct-balance {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 15;
   -fx-font-weight: bold;
   -fx-text-fill: #333948;
@@ -563,7 +569,7 @@
 }
 
 .amount-hero {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 34;
   -fx-font-weight: bold;
   -fx-text-fill: #3454e1;
@@ -667,7 +673,7 @@
 }
 
 .stat-value {
-  -fx-font-family: "Plus Jakarta Sans", "Segoe UI";
+  -fx-font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
   -fx-font-size: 19;
   -fx-font-weight: bold;
   -fx-text-fill: #333948;

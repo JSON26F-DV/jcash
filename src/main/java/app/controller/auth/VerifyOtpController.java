@@ -1,6 +1,7 @@
 package app.controller.auth;
 
 import app.controller.common.AppRoutes;
+import app.i18n.I18n;
 import app.services.PasswordResetService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -117,7 +118,7 @@ public class VerifyOtpController {
         long seconds = resetService.resendSecondsRemaining();
         if (seconds == 0) {
             resendButton.setDisable(false);
-            resendButton.setText("Resend code");
+            resendButton.setText(I18n.get("otp.resend"));
             if (resendTimer != null) {
                 resendTimer.stop();
             }
@@ -126,6 +127,6 @@ public class VerifyOtpController {
         resendButton.setDisable(true);
         long minutes = seconds / 60;
         long remainingSeconds = seconds % 60;
-        resendButton.setText(String.format("Resend code in %02d:%02d", minutes, remainingSeconds));
+        resendButton.setText(I18n.format("otp.resend.countdown", minutes, remainingSeconds));
     }
 }

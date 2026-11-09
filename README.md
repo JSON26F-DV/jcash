@@ -56,7 +56,7 @@ transactions with conditional balance updates, so a failed transfer cannot leave
 | **Registration** | Create an account with first name, last name, mobile number, email, and a 6-digit PIN. Duplicate mobile numbers and emails are rejected. |
 | **PIN sign-in** | Login with a mobile number and 6-digit PIN. Three consecutive failures lock the session and exit the app. |
 | **PIN hashing** | PINs are never stored in plaintext — they are hashed before persistence and never logged. |
-| **Multi-language UI** | Landing screen switcher for English, Filipino, Bisaya, Spanish, Japanese, Korean, and Chinese. |
+| **Multi-language UI** | Whole UI localized in English, Filipino, Bisaya, Spanish, Japanese, Korean, and Chinese through resource bundles. Switcher on the landing screen and Settings; the choice persists across restarts, the current screen reloads live, and CJK fonts apply for Japanese, Korean, and Chinese. |
 | **Session handling** | In-memory session tracks the signed-in user; sign-out returns to the landing screen. |
 | **Account deletion** | Self-service closure from Settings, guarded by a typed confirmation phrase. Soft-deletes the account and blocks all future sign-ins. |
 
@@ -230,10 +230,9 @@ The seed dump ships with these accounts (mobile number + 6-digit PIN):
 
 | Mobile number | PIN | Account holder |
 | --- | --- | --- |
-| `09876543212` | `654321` | Jason Begornia |
-| `09945646355` | `123456` | Demo customer |
-| `09123456789` | `123456` | Demo customer |
-| `09876543217` | `123456` | Demo customer |
+| `09876543212` | `654321` | jason begornia |
+| `09945646355` | `123456` | tung tung sahur |
+| `09876543217` | `123456` | tralalero tralala |
 
 > Demo data only. Delete or replace these rows before using the app with real information.
 
@@ -253,6 +252,7 @@ src/main/java/app
 │   └── components/
 ├── dao/                       # DAO interfaces + JDBI implementations (users, transactions, cards)
 ├── dto/                       # Transfer objects and view records
+├── i18n/                      # I18n helper — bundle lookup, language persistence
 ├── model/                     # User, Transaction
 ├── services/                  # AuthService, TransactionService, CardService, PasswordResetService, BrevoEmailService
 ├── session/                   # UserSession
@@ -261,7 +261,8 @@ src/main/java/app
 
 src/main/resources/app
 ├── view/                      # FXML layouts (customer/cards.fxml, customer/new_card.fxml, pages/DeletedAccount.fxml, ...)
-├── css/                       # Stylesheets (Style.css, customer.css, app.css)
+├── css/                       # Stylesheets (Style.css, customer.css, app.css, i18n.css)
+├── i18n/                      # Translation bundles messages.properties + 6 locales (fil, ceb, es, ja, ko, zh)
 ├── assets/                    # Logo and imagery
 └── email/password-reset.html  # OTP email template
 ```

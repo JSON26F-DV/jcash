@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-font-family:'Inter';" stylesheets="@../../css/customer.css, @../../css/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.CardsController">
+<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9;" stylesheets="@../../css/customer.css, @../../css/app.css, @../../css/Style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.CardsController">
    <padding><Insets bottom="12" left="12" right="12" top="12" /></padding>
 
    <BorderPane fx:id="shell" style="-fx-background-color:#FFFFFF; -fx-background-radius:32;">
@@ -27,9 +27,9 @@
             <!-- HEADER -->
             <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="12">
                <padding><Insets bottom="0" left="36" right="36" top="32" /></padding>
-               <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="My cards" />
+               <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="%cards.title" />
                <Label style="-fx-text-fill:#DDE2EA; -fx-font-size:14px;" text="|" />
-               <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Your cards, your control." />
+               <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%cards.welcome" />
                <Region HBox.hgrow="ALWAYS" />
                <Label fx:id="dateTimeLabel" style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="14:32, 09 October 2026" />
             </HBox>
@@ -42,11 +42,11 @@
                      <!-- TITLE ROW -->
                      <HBox alignment="CENTER_LEFT" spacing="12">
                         <VBox spacing="3">
-                           <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="My cards" />
-                           <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Freeze a card, change its PIN, or add a new one." />
+                           <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%cards.title" />
+                           <Label style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="%cards.subtitle" />
                         </VBox>
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="newCardButton" prefHeight="40" style="-fx-background-color:#3454E1; -fx-background-radius:16; -fx-text-fill:#FFFFFF; -fx-font-size:13px; -fx-font-weight:bold; -fx-padding:0 18 0 18; -fx-cursor:hand;" text="New card" />
+                        <Button fx:id="newCardButton" prefHeight="40" style="-fx-background-color:#3454E1; -fx-background-radius:16; -fx-text-fill:#FFFFFF; -fx-font-size:13px; -fx-font-weight:bold; -fx-padding:0 18 0 18; -fx-cursor:hand;" text="%cards.new" />
                      </HBox>
 
                      <!-- CARD GRID (filled by CardsController) -->

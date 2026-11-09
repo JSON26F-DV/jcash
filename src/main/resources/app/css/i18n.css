@@ -1,0 +1,22 @@
+.root {
+  -fx-font-family:
+    "Inter", "Plus Jakarta Sans", "Segoe UI", "Helvetica Neue", Arial,
+    "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", sans-serif;
+}
+
+.locale-cjk,
+.locale-cjk *,
+.locale-cjk .text,
+.locale-cjk .label,
+.locale-cjk .button,
+.locale-cjk .text-field,
+.locale-cjk .password-field,
+.locale-cjk .hyperlink,
+.locale-cjk .titled-pane,
+.locale-cjk .table-view,
+.locale-cjk .table-cell,
+.locale-cjk .column-header .label {
+  -fx-font-family:
+    "Noto Sans CJK JP", "Noto Sans CJK SC", "Noto Sans CJK KR", "Inter",
+    "Plus Jakarta Sans", "Segoe UI", sans-serif;
+}

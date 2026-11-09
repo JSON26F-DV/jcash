@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" stylesheets="@../../css/customer.css" style="-fx-background-color:#F4F6F9; -fx-font-family:'Inter';" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.DetailsController">
+<StackPane fx:id="rootPane" minHeight="700" minWidth="1280" prefHeight="700" prefWidth="1280" stylesheets="@../../css/customer.css, @../../css/app.css, @../../css/Style.css" style="-fx-background-color:#F4F6F9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.DetailsController">
    <padding><Insets bottom="12" left="12" right="12" top="12" /></padding>
 
    <BorderPane fx:id="shell" style="-fx-background-color:#FFFFFF; -fx-background-radius:32;">
@@ -19,9 +19,9 @@
          <VBox fx:id="centerBox">
             <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="12">
                <padding><Insets bottom="0" left="36" right="36" top="32" /></padding>
-               <Label fx:id="pageTitleLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="Transaction details" />
+               <Label fx:id="pageTitleLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="%details.title" />
                <Label style="-fx-font-size:14px; -fx-text-fill:#DDE2EA;" text="|" />
-               <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Hello Jane, welcome back." />
+               <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%details.welcome" />
                <Region HBox.hgrow="ALWAYS" />
                <Label fx:id="dateTimeLabel" style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" text="14:32, 09 October 2026" />
             </HBox>
@@ -36,8 +36,8 @@
                            <graphic><FontIcon iconColor="#333948" iconLiteral="fas-arrow-left" iconSize="13" /></graphic>
                         </Button>
                         <VBox spacing="4">
-                           <Label fx:id="pageHeadingLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Transaction details" />
-                           <Label fx:id="pageSubtitleLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="Everything about this transaction in one place." />
+                           <Label fx:id="pageHeadingLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%details.title" />
+                           <Label fx:id="pageSubtitleLabel" style="-fx-font-size:12px; -fx-text-fill:#9DA3A9;" text="%details.subtitle" />
                         </VBox>
                      </HBox>
 
@@ -48,7 +48,7 @@
                            <VBox fx:id="receiptCard" alignment="TOP_CENTER" spacing="0" style="-fx-background-color:#FFFFFF; -fx-background-radius:26 26 0 0; -fx-border-color:#EEF1F6; -fx-border-radius:26 26 0 0; -fx-effect:dropshadow(gaussian,rgba(30,40,80,0.10),24,0,0,12);">
                               <padding><Insets bottom="24" left="28" right="28" top="30" /></padding>
 
-                              <Label fx:id="transactionTitleLabel" alignment="CENTER" maxWidth="440" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="" textAlignment="CENTER" wrapText="true" />
+                              <Label fx:id="transactionTitleLabel" alignment="CENTER" maxWidth="440" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="" textAlignment="CENTER" wrapText="true" />
 
                               <StackPane fx:id="iconBubble" maxHeight="76" maxWidth="76" minHeight="76" minWidth="76">
                                  <VBox.margin><Insets bottom="22" top="18" /></VBox.margin>
@@ -66,20 +66,20 @@
 
                                  <HBox alignment="CENTER_LEFT" spacing="12">
                                     <padding><Insets bottom="12" left="8" right="8" top="12" /></padding>
-                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Amount" />
+                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%details.amount" />
                                     <Region HBox.hgrow="ALWAYS" />
                                     <Label fx:id="amountValueLabel" style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="" />
                                  </HBox>
 
                                  <HBox alignment="CENTER_LEFT" spacing="12">
                                     <padding><Insets bottom="12" left="8" right="8" top="12" /></padding>
-                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Date &amp; time" />
+                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%details.dateTime" />
                                     <Region HBox.hgrow="ALWAYS" />
                                     <Label fx:id="dateTimeValueLabel" style="-fx-font-size:13px; -fx-text-fill:#67707F;" text="" />
                                  </HBox>
                                  <HBox alignment="CENTER_LEFT" spacing="12">
                                     <padding><Insets bottom="12" left="8" right="8" top="12" /></padding>
-                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Message" />
+                                    <Label style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%details.message" />
                                     <Region HBox.hgrow="ALWAYS" />
                                     <Label fx:id="messageValueLabel" maxWidth="320" style="-fx-font-size:13px; -fx-text-fill:#67707F;" text="-" wrapText="true" />
                                  </HBox>
@@ -89,7 +89,7 @@
 
                               <HBox fx:id="referenceRow" alignment="CENTER_LEFT" spacing="12">
                                  <padding><Insets bottom="12" left="8" right="8" top="12" /></padding>
-                                 <Label style="-fx-font-size:13px; -fx-text-fill:#9DA3A9;" text="Reference number" />
+                                 <Label style="-fx-font-size:13px; -fx-text-fill:#9DA3A9;" text="%details.reference" />
                                  <Region HBox.hgrow="ALWAYS" />
                                  <Label fx:id="referenceValueLabel" style="-fx-font-family:'monospace'; -fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="" />
                                  <Button fx:id="copyReferenceButton" maxHeight="32" maxWidth="32" minHeight="32" minWidth="32" prefHeight="32" prefWidth="32" style="-fx-background-color:transparent; -fx-background-radius:999; -fx-padding:0;">
@@ -110,8 +110,8 @@
                            <FontIcon iconColor="#3454E1" iconLiteral="fas-question" iconSize="16" />
                         </StackPane>
                         <TextFlow fx:id="helpTextFlow" HBox.hgrow="ALWAYS" style="-fx-background-color:transparent;">
-                           <Text style="-fx-font-family:'Inter'; -fx-font-size:12px; -fx-fill:#67707F;" text="Have questions or concerns about this transaction? " />
-                           <Hyperlink fx:id="getHelpLink" style="-fx-background-color:transparent; -fx-border-color:transparent; -fx-font-family:'Inter'; -fx-font-size:12px; -fx-font-weight:bold; -fx-padding:0; -fx-underline:false; -fx-text-fill:#3454E1;" text="Get Help" />
+                           <Text style="-fx-font-family:'Inter','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:12px; -fx-fill:#67707F;" text="%details.help" />
+                           <Hyperlink fx:id="getHelpLink" style="-fx-background-color:transparent; -fx-border-color:transparent; -fx-font-size:12px; -fx-font-weight:bold; -fx-padding:0; -fx-underline:false; -fx-text-fill:#3454E1;" text="%details.getHelp" />
                         </TextFlow>
                      </HBox>
                   </VBox>

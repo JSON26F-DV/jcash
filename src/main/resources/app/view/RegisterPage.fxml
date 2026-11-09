@@ -21,8 +21,8 @@
                   <VBox maxWidth="680" prefWidth="471.0" spacing="0" styleClass="register-content">
                      <children>
                         <Label fx:id="backPage" styleClass="back-arrow" text="‹" />
-                        <Label styleClass="register-heading" text="Get started on JCash Bank " wrapText="true" />
-                        <Label maxWidth="624.0" prefHeight="48.0" prefWidth="624.0" styleClass="register-subtext" text="  JCash Account lets you access multiple JCash Card, easily and securely." wrapText="true">
+                        <Label styleClass="register-heading" text="%register.title" wrapText="true" />
+                        <Label maxWidth="624.0" prefHeight="48.0" prefWidth="624.0" styleClass="register-subtext" text="%register.subtitle" wrapText="true">
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -31,37 +31,37 @@
                               </ImageView>
                            </graphic></Label>
 
-                        <Label styleClass="field-label" text="Name" />
+                        <Label styleClass="field-label" text="%register.name.label" />
                         <HBox spacing="12">
                            <children>
-                              <TextField fx:id="firstNameField" promptText="First name" styleClass="reg-input" HBox.hgrow="ALWAYS" />
-                              <TextField fx:id="lastNameField" promptText="Last name" styleClass="reg-input" HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="firstNameField" promptText="%register.firstname.prompt" styleClass="reg-input" HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="lastNameField" promptText="%register.lastname.prompt" styleClass="reg-input" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
 
-                        <Label styleClass="field-label" text="Mobile number" />
-                        <TextField fx:id="mobileNumberField" promptText="Mobile number" styleClass="reg-input" />
-                        <Label styleClass="field-label" text="Email" />
-                        <TextField fx:id="emailField" promptText="Email" styleClass="reg-input" />
-                        <Label styleClass="note-text" text="You may receive notifications from us. Learn why we ask for your contact information" wrapText="true" />
+                        <Label styleClass="field-label" text="%landing.mobile.prompt" />
+                        <TextField fx:id="mobileNumberField" promptText="%landing.mobile.prompt" styleClass="reg-input" />
+                        <Label styleClass="field-label" text="%common.email" />
+                        <TextField fx:id="emailField" promptText="%common.email" styleClass="reg-input" />
+                        <Label styleClass="note-text" text="%common.contact.note" wrapText="true" />
 
-                        <Label styleClass="field-label" text="PIN" />
-                         <PasswordField fx:id="pinField" promptText="6-digit PIN" styleClass="reg-input" />
-                        <Label styleClass="field-label" text="Confirm PIN" />
-                        <PasswordField fx:id="confirmPinField" promptText="Re-enter PIN" styleClass="reg-input" />
+                        <Label styleClass="field-label" text="%register.pin.label" />
+                         <PasswordField fx:id="pinField" promptText="%register.pin.prompt" styleClass="reg-input" />
+                        <Label styleClass="field-label" text="%common.confirm.pin.label" />
+                        <PasswordField fx:id="confirmPinField" promptText="%register.confirm.pin.prompt" styleClass="reg-input" />
                         <Label fx:id="errorLabel" style="-fx-text-fill: #DC2626;" wrapText="true" />
 
 
                         <VBox spacing="8" style="-fx-padding: 16 0 16 0;">
                            <children>
-                              <Label styleClass="legal-text" text="People who use our service may have uploaded your contact information to Nova Bank. Learn more." wrapText="true" />
-                              <Label styleClass="legal-text" text="By tapping Submit, you agree to create an account and to Nova Bank's Terms, Privacy Policy and Cookies Policy." wrapText="true" />
-                              <Label styleClass="legal-text" text="The Privacy Policy describes the ways we can use the information we collect when you create an account. For example, we use this information to provide, personalize and improve our products, including ads." wrapText="true" />
+                              <Label styleClass="legal-text" text="%register.legal.uploaded" wrapText="true" />
+                              <Label styleClass="legal-text" text="%register.legal.agree" wrapText="true" />
+                              <Label styleClass="legal-text" text="%register.legal.privacy" wrapText="true" />
                            </children>
                         </VBox>
 
-                        <Button fx:id="submitBtn" maxWidth="Infinity" styleClass="btn-primary" text="Submit" />
-                        <Button fx:id="loginBtn" maxWidth="Infinity" styleClass="btn-secondary" text="I already have an account">
+                        <Button fx:id="submitBtn" maxWidth="Infinity" styleClass="btn-primary" text="%register.submit" />
+                        <Button fx:id="loginBtn" maxWidth="Infinity" styleClass="btn-secondary" text="%register.login">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin></Button>

@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.Locale;
 
 import app.dao.UserDAO;
+import app.i18n.I18n;
 import app.util.PinUtil;
 
 public class PasswordResetService {
@@ -31,12 +32,12 @@ public class PasswordResetService {
     public boolean sendOtp(String inputEmail) {
         clear();
         if (inputEmail == null || inputEmail.isBlank()) {
-            message = "Enter your email address.";
+            message = I18n.get("reset.emailRequired");
             return false;
         }
         String normalizedEmail = inputEmail.trim().toLowerCase(Locale.ROOT);
         if (!userDAO.existsByEmail(normalizedEmail)) {
-            message = "No account is registered with that email.";
+            message = I18n.get("reset.emailUnknown");
             return false;
         }
 
@@ -47,17 +48,17 @@ public class PasswordResetService {
         }
         email = normalizedEmail;
         startOtp(otpText);
-        message = "Verification code sent to your email.";
+        message = I18n.get("reset.sent");
         return true;
     }
 
     public boolean resendOtp() {
         if (email == null) {
-            message = "Request a verification code first.";
+            message = I18n.get("reset.requestFirst");
             return false;
         }
         if (resendSecondsRemaining() > 0) {
-            message = "Please wait before requesting another code.";
+            message = I18n.get("reset.wait");
             return false;
         }
 
@@ -67,7 +68,7 @@ public class PasswordResetService {
             return false;
         }
         startOtp(otpText);
-        message = "A new verification code was sent.";
+        message = I18n.get("reset.resent");
         return true;
     }
 
@@ -81,11 +82,11 @@ public class PasswordResetService {
     private boolean sendCode(String recipient, String otp) {
         try {
             if (!emailService.sendOtp(recipient, otp)) {
-                message = "Could not send the verification email. Check your Brevo settings.";
+                message = I18n.get("reset.sendFailed");
                 return false;
             }
         } catch (RuntimeException e) {
-            message = e.getMessage();
+            message = I18n.format("reset.sendFailedDetails", e.getMessage());
             return false;
         }
         return true;
@@ -102,48 +103,48 @@ public class PasswordResetService {
     public boolean verifyOtp(String otp) {
         if (otpHash == null || expiresAt == null || Instant.now().isAfter(expiresAt)) {
             clear();
-            message = "The verification code expired. Request a new one.";
+            message = I18n.get("reset.expired");
             return false;
         }
         if (attempts >= OTP_ATTEMPT_LIMIT) {
             clear();
-            message = "Too many incorrect codes. Request a new one.";
+            message = I18n.get("reset.tooManyCodes");
             return false;
         }
         if (!PinUtil.matches(otp, otpHash)) {
             attempts++;
-            message = "Incorrect verification code.";
+            message = I18n.get("reset.incorrectCode");
             return false;
         }
         verified = true;
-        message = "Code verified.";
+        message = I18n.get("reset.verified");
         return true;
     }
 
     public boolean changePin(String pin, String confirmPin) {
         if (!verified || email == null) {
-            message = "Verify the email code first.";
+            message = I18n.get("reset.verifyFirst");
             return false;
         }
         if (expiresAt == null || Instant.now().isAfter(expiresAt)) {
             clear();
-            message = "The verification code expired. Request a new one.";
+            message = I18n.get("reset.expired");
             return false;
         }
         if (pin == null || !pin.matches("\\d{6}")) {
-            message = "PIN must be exactly 6 digits.";
+            message = I18n.get("reset.pinLength");
             return false;
         }
         if (!pin.equals(confirmPin)) {
-            message = "PINs do not match.";
+            message = I18n.get("reset.pinMismatch");
             return false;
         }
         if (!userDAO.updatePinByEmail(email, PinUtil.hash(pin))) {
-            message = "Could not update the PIN. Please try again.";
+            message = I18n.get("reset.updateFailed");
             return false;
         }
         clear();
-        message = "PIN updated. You can now log in.";
+        message = I18n.get("reset.updated");
         return true;
     }
 

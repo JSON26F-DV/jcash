@@ -50,16 +50,16 @@
                <children>
                   <VBox alignment="TOP_CENTER" maxWidth="384" spacing="12">
                      <children>
-                        <Label fx:id="loginHeadingLabel" styleClass="heading" text="Log into JCash Bank" />
-                        <TextField fx:id="mobileNumberField" promptText="Mobile number" styleClass="input" />
-                        <PasswordField fx:id="passwordField" promptText="Enter your 6-Digit PIN" styleClass="input" />
-                        <Button fx:id="javaBtn" maxWidth="Infinity" styleClass="btn-primary" text="Log in" />
-                        <Button fx:id="forgotPasswordButton" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0; -fx-text-fill: #000000; -fx-cursor: hand;" text="Forgot password?">
+                        <Label fx:id="loginHeadingLabel" styleClass="heading" text="%landing.title" />
+                        <TextField fx:id="mobileNumberField" promptText="%landing.mobile.prompt" styleClass="input" />
+                        <PasswordField fx:id="passwordField" promptText="%landing.pin.prompt" styleClass="input" />
+                        <Button fx:id="javaBtn" maxWidth="Infinity" styleClass="btn-primary" text="%landing.login" />
+                        <Button fx:id="forgotPasswordButton" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0; -fx-text-fill: #000000; -fx-cursor: hand;" text="%landing.forgot">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin></Button>
                         <Label fx:id="errorLabel" style="-fx-text-fill: #DC2626;" wrapText="true" />
-                        <Button fx:id="registerBtn" maxWidth="Infinity" styleClass="btn-outline" text="Create new account" />
+                        <Button fx:id="registerBtn" maxWidth="Infinity" styleClass="btn-outline" text="%landing.register" />
                         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="315.0" spacing="6" style="-fx-padding: 3 0 0 0;" />
                      </children>
                   </VBox>
@@ -78,26 +78,26 @@
          <children>
             <HBox spacing="16" styleClass="footer-row">
                <children>
-                  <Label onMouseClicked="#selectEnglish" styleClass="language-text" text="English (US)" />
-                  <Label onMouseClicked="#selectFilipino" styleClass="language-text" text="Filipino" />
-                  <Label onMouseClicked="#selectBisaya" styleClass="language-text" text="Bisaya" />
-                  <Label onMouseClicked="#selectSpanish" styleClass="language-text" text="Español" />
-                  <Label onMouseClicked="#selectJapanese" styleClass="language-text footer-cjk-jp" text="日本語" />
-                  <Label onMouseClicked="#selectKorean" styleClass="language-text footer-cjk-kr" text="한국어" />
-                  <Label onMouseClicked="#selectChinese" styleClass="language-text footer-cjk-sc" text="中文(简体)" />
+                  <Label id="en" onMouseClicked="#selectLocale" styleClass="language-text" text="English (US)" />
+                  <Label id="fil" onMouseClicked="#selectLocale" styleClass="language-text" text="Filipino" />
+                  <Label id="ceb" onMouseClicked="#selectLocale" styleClass="language-text" text="Bisaya" />
+                  <Label id="es" onMouseClicked="#selectLocale" styleClass="language-text" text="Español" />
+                  <Label id="ja" onMouseClicked="#selectLocale" styleClass="language-text footer-cjk-jp" text="日本語" />
+                  <Label id="ko" onMouseClicked="#selectLocale" styleClass="language-text footer-cjk-kr" text="한국어" />
+                  <Label id="zh" onMouseClicked="#selectLocale" styleClass="language-text footer-cjk-sc" text="中文(简体)" />
                </children>
             </HBox>
             <Separator style="-fx-padding: 8 0 8 0;" />
             <HBox spacing="16" styleClass="footer-row">
                <children>
-                  <Label styleClass="footer-link" text="Sign Up" />
-                  <Label styleClass="footer-link" text="Log In" />
-                  <Label styleClass="footer-link" text="Cards" />
-                  <Label styleClass="footer-link" text="Security" />
-                  <Label styleClass="footer-link" text="Help Center" />
-                  <Label fx:id="termsLink" styleClass="footer-link" text="Terms" />
-                  <Label fx:id="privacyLink" styleClass="footer-link" text="Privacy" />
-                  <Label styleClass="footer-link" text="Jcash Bank" />
+                  <Label styleClass="footer-link" text="%landing.footer.signup" />
+                  <Label styleClass="footer-link" text="%landing.footer.login" />
+                  <Label styleClass="footer-link" text="%landing.footer.cards" />
+                  <Label styleClass="footer-link" text="%landing.footer.security" />
+                  <Label styleClass="footer-link" text="%landing.footer.help" />
+                  <Label fx:id="termsLink" styleClass="footer-link" text="%landing.footer.terms" />
+                  <Label fx:id="privacyLink" styleClass="footer-link" text="%landing.footer.privacy" />
+                  <Label styleClass="footer-link" text="%landing.footer.brand" />
                </children>
             </HBox>
          </children>

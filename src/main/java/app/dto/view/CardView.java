@@ -1,5 +1,7 @@
 package app.dto.view;
 
+import app.i18n.I18n;
+
 public record CardView(
         long id,
         String cardType,
@@ -13,14 +15,29 @@ public record CardView(
         return labelForType(cardType);
     }
 
-    public static String labelForType(String cardType) {
+    public String localizedCardType() {
+        return localizedType(cardType);
+    }
+
+    public static String localizedType(String cardType) {
         if (cardType == null) {
-            return "Checking account";
+            return I18n.get("newCard.debit");
         }
         return switch (cardType.toLowerCase(java.util.Locale.ROOT)) {
-            case "credit" -> "Credit limit";
-            case "prepaid" -> "Holiday fund";
-            default -> "Checking account";
+            case "credit" -> I18n.get("newCard.credit");
+            case "prepaid" -> I18n.get("newCard.prepaid");
+            default -> I18n.get("newCard.debit");
+        };
+    }
+
+    public static String labelForType(String cardType) {
+        if (cardType == null) {
+            return I18n.get("card.label.checking");
+        }
+        return switch (cardType.toLowerCase(java.util.Locale.ROOT)) {
+            case "credit" -> I18n.get("card.label.credit");
+            case "prepaid" -> I18n.get("card.label.prepaid");
+            default -> I18n.get("card.label.checking");
         };
     }
 }

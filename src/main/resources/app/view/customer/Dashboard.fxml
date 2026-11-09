@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<StackPane fx:id="rootPane" minHeight="700" minWidth="900" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9; -fx-font-family:'Inter';" stylesheets="@../../css/customer.css, @../../css/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.DashboardController">
+<StackPane fx:id="rootPane" minHeight="700" minWidth="900" prefHeight="700" prefWidth="1280" style="-fx-background-color:#F4F6F9;" stylesheets="@../../css/customer.css, @../../css/app.css, @../../css/Style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.customer.DashboardController">
    <padding><Insets bottom="12" left="12" right="12" top="12" /></padding>
 
    <BorderPane fx:id="shell" style="-fx-background-color:#FFFFFF; -fx-background-radius:32;">
@@ -25,9 +25,9 @@
             <!-- HEADER -->
             <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="12">
                <padding><Insets bottom="0" left="36" right="36" top="32" /></padding>
-               <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="Dashboard" />
+               <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:14px; -fx-text-fill:#9DA3A9;" text="%dashboard.title" />
                <Label style="-fx-text-fill:#DDE2EA; -fx-font-size:14px;" text="|" />
-               <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Hello, Welcome Back." />
+               <Label fx:id="welcomeLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:19px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%dashboard.welcome" />
                <Region HBox.hgrow="ALWAYS" />
                <Label fx:id="dateTimeLabel" style="-fx-font-size:11px; -fx-text-fill:#9DA3A9;" />
             </HBox>
@@ -42,22 +42,22 @@
                         <padding><Insets bottom="22" left="24" right="24" top="22" /></padding>
 
                         <HBox alignment="CENTER_LEFT" spacing="10">
-                           <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Available balance" />
+                           <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%dashboard.availableBalance" />
                            <Region HBox.hgrow="ALWAYS" />
-                           <Button fx:id="balanceVisibilityButton" accessibleText="Hide balance" styleClass="balance-visibility-button">
+                           <Button fx:id="balanceVisibilityButton" accessibleText="%dashboard.hideBalance" styleClass="balance-visibility-button">
                               <graphic><SVGPath fx:id="balanceVisibilityIcon" content="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" /></graphic>
                            </Button>
-                           <Button fx:id="cashInShortcutButton" prefHeight="32" style="-fx-background-color:#3454E1; -fx-background-radius:999; -fx-text-fill:#FFFFFF; -fx-font-size:12px; -fx-font-weight:bold; -fx-padding:0 16 0 12; -fx-cursor:hand;" text="Cash in">
+                           <Button fx:id="cashInShortcutButton" prefHeight="32" style="-fx-background-color:#3454E1; -fx-background-radius:999; -fx-text-fill:#FFFFFF; -fx-font-size:12px; -fx-font-weight:bold; -fx-padding:0 16 0 12; -fx-cursor:hand;" text="%dashboard.cashIn">
                               <graphic><SVGPath content="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z" fill="#FFFFFF" scaleX="0.8" scaleY="0.8" /></graphic>
                            </Button>
                         </HBox>
 
                         <HBox alignment="BASELINE_LEFT" spacing="8">
-                           <Label fx:id="currencyLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:44px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="₱" />
-                           <Label fx:id="balanceAmountLabel" style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:44px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="0.00" />
+                           <Label fx:id="currencyLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:44px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="₱" />
+                           <Label fx:id="balanceAmountLabel" style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:44px; -fx-font-weight:bold; -fx-text-fill:#3454E1;" text="0.00" />
                         </HBox>
                         <VBox spacing="3">
-                           <Label styleClass="dashboard-mobile-label" text="Phone number" />
+                           <Label styleClass="dashboard-mobile-label" text="%dashboard.phoneNumber" />
                            <Label fx:id="mobileNumberLabel" styleClass="dashboard-mobile" text="*** **** 0000" />
                         </VBox>
                      </VBox>
@@ -66,7 +66,7 @@
                      <VBox fx:id="myCardsPanel" spacing="14" style="-fx-background-color:#FFFFFF; -fx-background-radius:26; -fx-border-color:#EEF1F6; -fx-border-radius:26; -fx-effect:dropshadow(gaussian,rgba(30,40,80,0.10),24,0,0,12);">
                         <padding><Insets bottom="22" left="24" right="24" top="22" /></padding>
                         <HBox alignment="CENTER_LEFT" spacing="10">
-                           <Label styleClass="panel-title" text="My cards" />
+                           <Label styleClass="panel-title" text="%dashboard.cards" />
                            <Region HBox.hgrow="ALWAYS" />
                         </HBox>
                         <HBox fx:id="cardsStrip" alignment="CENTER_LEFT" spacing="16" />
@@ -77,9 +77,9 @@
                         <padding><Insets bottom="22" left="24" right="24" top="22" /></padding>
 
                         <HBox alignment="CENTER_LEFT" spacing="10">
-                           <Label style="-fx-font-family:'Plus Jakarta Sans'; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="Latest transactions" />
+                           <Label style="-fx-font-family:'Plus Jakarta Sans','Noto Sans CJK JP','Noto Sans CJK KR','Noto Sans CJK SC',sans-serif; -fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#333948;" text="%dashboard.latestTransactions" />
                            <Region HBox.hgrow="ALWAYS" />
-                           <Button fx:id="viewMoreButton" prefHeight="32" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-radius:16; -fx-text-fill:#3454E1; -fx-font-size:12px; -fx-padding:0 14 0 14;" text="View more" />
+                           <Button fx:id="viewMoreButton" prefHeight="32" style="-fx-background-color:#FFFFFF; -fx-background-radius:16; -fx-border-color:#EEF1F6; -fx-border-radius:16; -fx-text-fill:#3454E1; -fx-font-size:12px; -fx-padding:0 14 0 14;" text="%dashboard.viewMore" />
                         </HBox>
 
                         <VBox fx:id="transactionsListBox" spacing="0" />

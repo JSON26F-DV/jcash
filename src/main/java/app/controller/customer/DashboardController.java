@@ -4,13 +4,13 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 
 import app.controller.common.AppRoutes;
 import app.controller.common.HeaderController;
 import app.dto.TransactionDTO;
 import app.dto.view.CardView;
 import app.dto.view.UserRecord;
+import app.i18n.I18n;
 import app.services.CardService;
 import app.services.TransactionService;
 import javafx.fxml.FXML;
@@ -77,7 +77,8 @@ public class DashboardController extends HeaderController {
     private void toggleBalanceVisibility() {
         balanceVisible = !balanceVisible;
         balanceAmountLabel.setText(balanceVisible ? visibleBalanceText : "••••••");
-        balanceVisibilityButton.setAccessibleText(balanceVisible ? "Hide balance" : "Show balance");
+        balanceVisibilityButton
+                .setAccessibleText(I18n.get(balanceVisible ? "dashboard.hideBalance" : "dashboard.showBalance"));
         balanceVisibilityIcon.setContent(balanceVisible
                 ? "M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"
                 : "M2 3.27 3.28 2 22 20.72 20.73 22l-3.12-3.12A11.9 11.9 0 0 1 12 20C7 20 2.73 16.89 1 13c.78-1.75 2.06-3.28 3.67-4.42L2 3.27zM12 6c5 0 9.27 3.11 11 7-.63 1.41-1.57 2.67-2.75 3.69l-3.08-3.08a5.2 5.2 0 0 0 .08-.92 5.25 5.25 0 0 0-5.25-5.25c-.32 0-.63.03-.93.08L9.2 5.65A12.6 12.6 0 0 1 12 6zM7 12.27l1.58 1.58a3.5 3.5 0 0 1 4.57-4.57l1.58 1.58a3.5 3.5 0 0 1-4.57 4.57L7 12.27z");
@@ -104,7 +105,7 @@ public class DashboardController extends HeaderController {
         tile.getStyleClass().add("dashboard-add-card");
         Label plus = new Label("+");
         plus.getStyleClass().add("dashboard-add-plus");
-        Label text = new Label("Add card");
+        Label text = new Label(I18n.get("dashboard.addCard"));
         text.getStyleClass().add("dashboard-add-label");
         tile.getChildren().addAll(plus, text);
         tile.setOnMouseClicked(event -> AppRoutes.newCard());
@@ -146,7 +147,8 @@ public class DashboardController extends HeaderController {
         body.getStyleClass().add("dashboard-card-body");
         HBox heading = new HBox();
         heading.setAlignment(Pos.CENTER_LEFT);
-        Label type = cardLabel(card.cardType().toUpperCase(Locale.ROOT) + " CARD", "card-label");
+        Label type = cardLabel(CardView.localizedType(card.cardType()).toUpperCase(I18n.locale()) + " CARD",
+                "card-label");
         Region headingSpace = new Region();
         HBox.setHgrow(headingSpace, Priority.ALWAYS);
         heading.getChildren().addAll(type, headingSpace, cardLabel("VISA", "card-visa"));
